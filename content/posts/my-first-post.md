@@ -8,6 +8,4 @@ draft = true
 
 This is **bold** text, and this is _emphasized_ text.
 
-Hey, man !!!
-
 Visit the [Hugo](https://gohugo.io) website!
