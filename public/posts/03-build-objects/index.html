@@ -17,8 +17,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="rgb(255,255,255)" />
   
-  <title> &middot; HoHai&#39;s GitBlogs</title>
-    <meta name="title" content=" &middot; HoHai&#39;s GitBlogs" />
+  <title>Build Objects &middot; HoHai&#39;s GitBlogs</title>
+    <meta name="title" content="Build Objects &middot; HoHai&#39;s GitBlogs" />
   
   
   
@@ -54,7 +54,12 @@
     name="description"
     content="
       
-        new in function call #graphA[&#34;var john = new Person()&#34;]B[&#34;{} - 0x001 in memory&#34;]C[&#34;function Person()&lt;br&gt; (without returned value)&lt;br&gt;&lt;b&gt;FUNCTION CONSTRUCTOR&lt;/b&gt;&#34;]D[&#34;function Person()&lt;br&gt; (with returned value)&#34;]E[&#34;var john (refer to returned value)&#34;]A--new--&gt;BB--incase OK, function without return value&lt;br&gt;change pointer &lt;b&gt;this&lt;/b&gt; = {} --&gt;CC--update {}-0x001 and assign to variable --&gt;AB--incase NOK, function with return value&lt;br&gt;change pointer &lt;b&gt;this&lt;/b&gt; = {} --&gt; DD--&gt;Estyle C fill:#4287f5 function Person(firstName, lastName) { this.
+        new in function call # graphA[&#34;var john = new Person()&#34;]B[&#34;{} - 0x001 in memory&#34;]C[&#34;function Person()
+(without returned value)
+FUNCTION CONSTRUCTOR&#34;]D[&#34;function Person()
+(with returned value)&#34;]E[&#34;var john (refer to returned value)&#34;]A--new--&gt;BB--incase OK, function without return value
+change pointer this = {} --&gt;CC--update {}-0x001 and assign to variable --&gt;AB--incase NOK, function with return value
+change pointer this = {} --&gt; DD--&gt;Estyle C fill:#4287f5function Person(firstName, lastName) { this.
       
     "
   />
@@ -78,14 +83,21 @@
   
   <meta property="og:url" content="http://localhost:1313/posts/03-build-objects/">
   <meta property="og:site_name" content="HoHai&#39;s GitBlogs">
-  <meta property="og:title" content="HoHai&#39;s GitBlogs">
-  <meta property="og:description" content="new in function call #graphA[&amp;#34;var john = new Person()&amp;#34;]B[&amp;#34;{} - 0x001 in memory&amp;#34;]C[&amp;#34;function Person()&amp;lt;br&amp;gt; (without returned value)&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;FUNCTION CONSTRUCTOR&amp;lt;/b&amp;gt;&amp;#34;]D[&amp;#34;function Person()&amp;lt;br&amp;gt; (with returned value)&amp;#34;]E[&amp;#34;var john (refer to returned value)&amp;#34;]A--new--&amp;gt;BB--incase OK, function without return value&amp;lt;br&amp;gt;change pointer &amp;lt;b&amp;gt;this&amp;lt;/b&amp;gt; = {} --&amp;gt;CC--update {}-0x001 and assign to variable --&amp;gt;AB--incase NOK, function with return value&amp;lt;br&amp;gt;change pointer &amp;lt;b&amp;gt;this&amp;lt;/b&amp;gt; = {} --&amp;gt; DD--&amp;gt;Estyle C fill:#4287f5 function Person(firstName, lastName) { this.">
+  <meta property="og:title" content="Build Objects">
+  <meta property="og:description" content="new in function call # graphA[&#34;var john = new Person()&#34;]B[&#34;{} - 0x001 in memory&#34;]C[&#34;function Person() (without returned value) FUNCTION CONSTRUCTOR&#34;]D[&#34;function Person() (with returned value)&#34;]E[&#34;var john (refer to returned value)&#34;]A--new--&gt;BB--incase OK, function without return value change pointer this = {} --&gt;CC--update {}-0x001 and assign to variable --&gt;AB--incase NOK, function with return value change pointer this = {} --&gt; DD--&gt;Estyle C fill:#4287f5function Person(firstName, lastName) { this.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-02-21T00:00:00+00:00">
 
-  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="">
-<meta name="twitter:description" content="new in function call #graphA[&#34;var john = new Person()&#34;]B[&#34;{} - 0x001 in memory&#34;]C[&#34;function Person()&lt;br&gt; (without returned value)&lt;br&gt;&lt;b&gt;FUNCTION CONSTRUCTOR&lt;/b&gt;&#34;]D[&#34;function Person()&lt;br&gt; (with returned value)&#34;]E[&#34;var john (refer to returned value)&#34;]A--new--&gt;BB--incase OK, function without return value&lt;br&gt;change pointer &lt;b&gt;this&lt;/b&gt; = {} --&gt;CC--update {}-0x001 and assign to variable --&gt;AB--incase NOK, function with return value&lt;br&gt;change pointer &lt;b&gt;this&lt;/b&gt; = {} --&gt; DD--&gt;Estyle C fill:#4287f5 function Person(firstName, lastName) { this.">
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Build Objects">
+<meta name="twitter:description" content="new in function call # graphA[&#34;var john = new Person()&#34;]B[&#34;{} - 0x001 in memory&#34;]C[&#34;function Person()
+(without returned value)
+FUNCTION CONSTRUCTOR&#34;]D[&#34;function Person()
+(with returned value)&#34;]E[&#34;var john (refer to returned value)&#34;]A--new--&gt;BB--incase OK, function without return value
+change pointer this = {} --&gt;CC--update {}-0x001 and assign to variable --&gt;AB--incase NOK, function with return value
+change pointer this = {} --&gt; DD--&gt;Estyle C fill:#4287f5function Person(firstName, lastName) { this.">
 
   
   <script type="application/ld+json">
@@ -93,26 +105,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Posts",
-    "name": "",
-    "headline": "",
+    "name": "Build Objects",
+    "headline": "Build Objects",
     
-    "abstract": "new in function call #graph\rA[\u0026#34;var john = new Person()\u0026#34;]\rB[\u0026#34;{} - 0x001 in memory\u0026#34;]\rC[\u0026#34;function Person()\u0026lt;br\u0026gt; (without returned value)\u0026lt;br\u0026gt;\u0026lt;b\u0026gt;FUNCTION CONSTRUCTOR\u0026lt;\/b\u0026gt;\u0026#34;]\rD[\u0026#34;function Person()\u0026lt;br\u0026gt; (with returned value)\u0026#34;]\rE[\u0026#34;var john (refer to returned value)\u0026#34;]\rA--new--\u0026gt;B\rB--incase OK, function without return value\u0026lt;br\u0026gt;change pointer \u0026lt;b\u0026gt;this\u0026lt;\/b\u0026gt; = {} --\u0026gt;C\rC--update {}-0x001 and assign to variable --\u0026gt;A\rB--incase NOK, function with return value\u0026lt;br\u0026gt;change pointer \u0026lt;b\u0026gt;this\u0026lt;\/b\u0026gt; = {} --\u0026gt; D\rD--\u0026gt;E\rstyle C fill:#4287f5 function Person(firstName, lastName) { this.",
+    "abstract": "new in function call # graph\rA[\u0022var john = new Person()\u0022]\rB[\u0022{} - 0x001 in memory\u0022]\rC[\u0022function Person()\n(without returned value)\nFUNCTION CONSTRUCTOR\u0022]\rD[\u0022function Person()\n(with returned value)\u0022]\rE[\u0022var john (refer to returned value)\u0022]\rA--new--\u003eB\rB--incase OK, function without return value\nchange pointer this = {} --\u003eC\rC--update {}-0x001 and assign to variable --\u003eA\rB--incase NOK, function with return value\nchange pointer this = {} --\u003e D\rD--\u003eE\rstyle C fill:#4287f5\rfunction Person(firstName, lastName) { this.",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/03-build-objects\/",
     "author" : {
       "@type": "Person",
       "name": "HoHai"
     },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-02-21T00:00:00\u002b00:00",
+    "datePublished": "2024-02-21T00:00:00\u002b00:00",
     
-    
-    
-    
-    
+    "dateModified": "2024-02-21T00:00:00\u002b00:00",
     
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "457"
+    "wordCount": "461"
   }
   </script>
 
@@ -126,6 +138,17 @@
   
   
   
+
+  
+  
+  
+  
+  <script
+    defer
+    type="text/javascript"
+    src="/js/mermaid.bundle.119bc656ad2b39a49942e355ac2786b1448e64e54bbdaa19847c9c33e64406bacb7fb81235046ee8110163298427867b64d77a30450e0cdf1cff958223ecb9ec.js"
+    integrity="sha512-EZvGVq0rOaSZQuNVrCeGsUSOZOVLvaoZhHycM&#43;ZEBrrLf7gSNQRu6BEBYymEJ4Z7ZNd6MEUODN8c/5WCI&#43;y57A=="
+  ></script>
 
 
 
@@ -240,7 +263,7 @@
     <header class="max-w-prose">
       
       <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-        
+        Build Objects
       </h1>
       
         <div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400">
@@ -276,7 +299,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">1 January 0001</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+      <time datetime="2024-02-21 00:00:00 &#43;0000 UTC">21 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
     
 
     
@@ -294,23 +317,28 @@
     <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
       
       <div class="min-h-0 min-w-0 max-w-prose grow">
-        <h3 id="new-in-function-call" class="relative group"><code>new</code> in function call <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#new-in-function-call" aria-label="Anchor">#</a></span></h3><pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph
-    A[&#34;var john = new Person()&#34;]
-    B[&#34;{} - 0x001 in memory&#34;]
-    C[&#34;function Person()&lt;br&gt; (without returned value)&lt;br&gt;&lt;b&gt;FUNCTION CONSTRUCTOR&lt;/b&gt;&#34;]
-    D[&#34;function Person()&lt;br&gt; (with returned value)&#34;]
-    E[&#34;var john (refer to returned value)&#34;]
+        <h3 id="new-in-function-call" class="relative group"><code>new</code> in function call <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#new-in-function-call" aria-label="Anchor">#</a></span></h3><div class="mermaid" align="center">
+  
+graph
+A["var john = new Person()"]
+B["{} - 0x001 in memory"]
+C["function Person()<br> (without returned value)<br><b>FUNCTION CONSTRUCTOR</b>"]
+D["function Person()<br> (with returned value)"]
+E["var john (refer to returned value)"]
 
-
-    A--new--&gt;B
-    B--incase OK, function without return value&lt;br&gt;change pointer &lt;b&gt;this&lt;/b&gt; = {} --&gt;C
-    C--update {}-0x001 and assign to variable --&gt;A
-    B--incase NOK, function with return value&lt;br&gt;change pointer &lt;b&gt;this&lt;/b&gt; = {} --&gt; D
-    D--&gt;E
+    A--new-->B
+    B--incase OK, function without return value<br>change pointer <b>this</b> = {} -->C
+    C--update {}-0x001 and assign to variable -->A
+    B--incase NOK, function with return value<br>change pointer <b>this</b> = {} --> D
+    D-->E
 
 
     style C fill:#4287f5
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>) {
+
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firstName</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lastName</span>;
 </span></span><span style="display:flex;"><span>}
@@ -518,7 +546,7 @@ Example of polyfill for <code>Object.create</code></p>
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="group flex" href="/posts/04-build-jquery/">
+            <a class="group flex" href="/posts/00-execution-context/">
               <span
                 class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
                 ><span class="ltr:inline rtl:hidden">&larr;</span
@@ -527,11 +555,11 @@ Example of polyfill for <code>Object.create</code></p>
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  ></span
+                  >Execution context in Javascript</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">1 January 0001</time>
+                    <time datetime="2024-02-20 00:00:00 &#43;0000 UTC">20 February 2024</time>
                   
                 </span>
               </span>
@@ -540,15 +568,15 @@ Example of polyfill for <code>Object.create</code></p>
         </span>
         <span>
           
-            <a class="group flex text-right" href="/posts/02-oop-prototype-inheritance/">
+            <a class="group flex text-right" href="/posts/traveller-tree/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  ></span
+                  >Traveller Tree</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">1 January 0001</time>
+                    <time datetime="2024-03-20 00:00:00 &#43;0000 UTC">20 March 2024</time>
                   
                 </span>
               </span>

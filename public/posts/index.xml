@@ -23,6 +23,13 @@
       <description>traveller-tree #This lib provide 2 features:&#xA;Get schema of json object Flat json object into array of elements. Install #npm install traveller-tree Get schema of json object #travelSchema({ A: { B: &amp;#34;A String&amp;#34;, C: 123, D: { D1: &amp;#34;D1 String&amp;#34;, D2: &amp;#34;D2 String&amp;#34;, }, E: [ { E1: &amp;#34;E1 in element 1&amp;#34;, }, { E1: &amp;#34;E1 in element 2&amp;#34;, }, ], }, }) ) Flat nested json to array of flat objects # Option 1: Using travelData MovePath should be at the deepest depth we want to get.</description>
     </item>
     <item>
+      <title>Build Objects</title>
+      <link>http://localhost:1313/posts/03-build-objects/</link>
+      <pubDate>Wed, 21 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/03-build-objects/</guid>
+      <description>new in function call # graph&#xD;A[&#34;var john = new Person()&#34;]&#xD;B[&#34;{} - 0x001 in memory&#34;]&#xD;C[&#34;function Person()&#xA;(without returned value)&#xA;FUNCTION CONSTRUCTOR&#34;]&#xD;D[&#34;function Person()&#xA;(with returned value)&#34;]&#xD;E[&#34;var john (refer to returned value)&#34;]&#xD;A--new--&gt;B&#xD;B--incase OK, function without return value&#xA;change pointer this = {} --&gt;C&#xD;C--update {}-0x001 and assign to variable --&gt;A&#xD;B--incase NOK, function with return value&#xA;change pointer this = {} --&gt; D&#xD;D--&gt;E&#xD;style C fill:#4287f5&#xD;function Person(firstName, lastName) { this.</description>
+    </item>
+    <item>
       <title>Execution context in Javascript</title>
       <link>http://localhost:1313/posts/00-execution-context/</link>
       <pubDate>Tue, 20 Feb 2024 00:00:00 +0000</pubDate>
@@ -35,6 +42,13 @@
       <pubDate>Tue, 20 Feb 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/01-objects-functions/</guid>
       <description>Objects # How objects are live in memory: They are siting in memory and keep the reference to others (keep in memory also) graph LR&#xD;A[&#34;Object 0x001&#34;] --&gt; B[&#34;Primitive &#39;Property&#39;&#xA;0x002&#34;]&#xD;A --&gt; C[&#34;Object Property = collection of name/value pairs&#xA;0x003&#34;]&#xD;A --&gt; D[&#34;function = method&#xA;0x004&#34;]&#xD;Namespace: # Keep variables and functions with name seperate Javascript doesn&amp;rsquo;t have namespaces var greet = &amp;#34;Hello !&amp;#34;; var greet = &amp;#34;HOLLA !&amp;#34;; console.</description>
+    </item>
+    <item>
+      <title>Prototype Inheritance</title>
+      <link>http://localhost:1313/posts/02-oop-prototype-inheritance/</link>
+      <pubDate>Tue, 20 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/02-oop-prototype-inheritance/</guid>
+      <description>Classical Inheritance vs Prototype Inheritance # Classical Inheritance: like C#, Java&amp;hellip; Prototypal Inheritance: Javascript Prototype # Prototype chain: the links that Javascript can search from current object to __proto__ parent object (and so on) graph&#xD;A[&#34;Obj&#34;]&#xD;B[&#34;prop-1&#34;]&#xD;C[&#34;__proto__&#34;]&#xD;D[&#34;prop-2&#34;]&#xD;E[&#34;__proto__&#34;]&#xD;F[&#34;prop-3&#34;]&#xD;G[&#34;Obj2&#34;]&#xD;H[&#34;...&#34;]&#xD;A--&gt;B&#xD;A--&gt;C&#xD;C--&gt;D&#xD;C--&gt;E&#xD;E--&gt;F&#xD;G--share same object (memory)--&gt;C&#xD;E--&gt;H&#xD;Everthing is an Object (or a primitive) # graph&#xD;D[&#34;Object&#34;]&#xD;E[&#34;function&#34;]&#xD;F[&#34;Array&#34;]&#xD;A[&#34;__proto__: Object-builtin&#xA;{toString: f,..}&#34;]&#xD;B[&#34;__proto__: Funcion-builtin</description>
     </item>
     <item>
       <title>Advanced Javascript Techniques</title>
@@ -245,27 +259,6 @@
       <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/2022-05-24-boston-data-analysis/</guid>
       <description>Business Understanding #I love to travel and usually when I have time and money, I pack my bags and hit the road. One of the issues affecting my travel budget is the cost of accommodation (hotel&amp;hellip;). Recently, when I joined the program on Udacity, I got data about housing prices in Boston. Let&amp;rsquo;s study housing prices in Boston with me. There are 3 questions that I am interested in when looking at this data:</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/posts/02-oop-prototype-inheritance/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/02-oop-prototype-inheritance/</guid>
-      <description>Classical Inheritance vs Prototype Inheritance # Classical Inheritance: like C#, Java&amp;hellip; Prototypal Inheritance: Javascript Prototype # Prototype chain: the links that Javascript can search from current object to __proto__ parent object (and so on) graph&#xD;A[&amp;#34;Obj&amp;#34;]&#xD;B[&amp;#34;prop-1&amp;#34;]&#xD;C[&amp;#34;__proto__&amp;#34;]&#xD;D[&amp;#34;prop-2&amp;#34;]&#xD;E[&amp;#34;__proto__&amp;#34;]&#xD;F[&amp;#34;prop-3&amp;#34;]&#xD;G[&amp;#34;Obj2&amp;#34;]&#xD;H[&amp;#34;...&amp;#34;]&#xD;A--&amp;gt;B&#xD;A--&amp;gt;C&#xD;C--&amp;gt;D&#xD;C--&amp;gt;E&#xD;E--&amp;gt;F&#xD;G--share same object (memory)--&amp;gt;C&#xD;E--&amp;gt;H Everthing is an Object (or a primitive) #graph&#xD;D[&amp;#34;Object&amp;#34;]&#xD;E[&amp;#34;function&amp;#34;]&#xD;F[&amp;#34;Array&amp;#34;]&#xD;A[&amp;#34;__proto__: Object-builtin&amp;lt;br&amp;gt;{toString: f,..}&amp;#34;]&#xD;B[&amp;#34;__proto__: Funcion-builtin&amp;lt;br&amp;gt;{call:f,..}&amp;#34;]&#xD;C[&amp;#34;__proto__: Array-builtin&amp;lt;br&amp;gt;{push:f,.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/posts/03-build-objects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/03-build-objects/</guid>
-      <description>new in function call #graph&#xD;A[&amp;#34;var john = new Person()&amp;#34;]&#xD;B[&amp;#34;{} - 0x001 in memory&amp;#34;]&#xD;C[&amp;#34;function Person()&amp;lt;br&amp;gt; (without returned value)&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;FUNCTION CONSTRUCTOR&amp;lt;/b&amp;gt;&amp;#34;]&#xD;D[&amp;#34;function Person()&amp;lt;br&amp;gt; (with returned value)&amp;#34;]&#xD;E[&amp;#34;var john (refer to returned value)&amp;#34;]&#xD;A--new--&amp;gt;B&#xD;B--incase OK, function without return value&amp;lt;br&amp;gt;change pointer &amp;lt;b&amp;gt;this&amp;lt;/b&amp;gt; = {} --&amp;gt;C&#xD;C--update {}-0x001 and assign to variable --&amp;gt;A&#xD;B--incase NOK, function with return value&amp;lt;br&amp;gt;change pointer &amp;lt;b&amp;gt;this&amp;lt;/b&amp;gt; = {} --&amp;gt; D&#xD;D--&amp;gt;E&#xD;style C fill:#4287f5 function Person(firstName, lastName) { this.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/posts/04-build-jquery/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/04-build-jquery/</guid>
-      <description>Use function contructor then we can access the prototype as __proto__ object #// Use function contructor then we can access the `prototype` as `__proto__` object function Empty() {} var jQuery = new Empty(); (function () { var slice = [].slice; jQuery.fn = jQuery.__proto__ = { toArray: function () { return slice.call(this); }, }; })(); console.log(jQuery.toArray([1, 2, 3])); </description>
     </item>
   </channel>
 </rss>

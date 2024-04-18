@@ -1,13 +1,17 @@
++++
+title = 'Build Objects'
+date = 2024-02-21
++++
+
 ### `new` in function call
 
-```mermaid
+{{< mermaid >}}
 graph
-    A["var john = new Person()"]
-    B["{} - 0x001 in memory"]
-    C["function Person()<br> (without returned value)<br><b>FUNCTION CONSTRUCTOR</b>"]
-    D["function Person()<br> (with returned value)"]
-    E["var john (refer to returned value)"]
-
+A["var john = new Person()"]
+B["{} - 0x001 in memory"]
+C["function Person()<br> (without returned value)<br><b>FUNCTION CONSTRUCTOR</b>"]
+D["function Person()<br> (with returned value)"]
+E["var john (refer to returned value)"]
 
     A--new-->B
     B--incase OK, function without return value<br>change pointer <b>this</b> = {} -->C
@@ -18,7 +22,7 @@ graph
 
     style C fill:#4287f5
 
-```
+{{< /mermaid >}}
 
 ```js
 function Person(firstName, lastName) {
