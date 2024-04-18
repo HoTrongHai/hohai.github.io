@@ -1,0 +1,708 @@
+<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=light data-auto-appearance=true><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="rgb(255,255,255)"><title>Advance Javascript (Part 3) &#183; HoHai's website</title>
+<meta name=title content="Advance Javascript (Part 3) &#183; HoHai's website"><script type=text/javascript src=/js/appearance.min.74ad8406faea02f3e186ba5126249aaeed9073629e04b05037b903396b188724.js integrity="sha256-dK2EBvrqAvPhhrpRJiSaru2Qc2KeBLBQN7kDOWsYhyQ="></script><link type=text/css rel=stylesheet href=/css/main.bundle.min.05134b0c076d1b4bbb3ca117e58cecc39cb5f77b40d6d202c5e4ecd80dea9dc8.css integrity="sha256-BRNLDAdtG0u7PKEX5Yzsw5y193tA1tICxeTs2A3qncg="><meta name=description content="
+      
+        Contructors with Prototypes # class was introducted in ES2015 class Car { constructor(model, year) { this.model = model; this.year = year; } // Should be move to Car.prototype object then all of Car instances will // be refer to same this function object // toString() { // console.log(`${this.model} has ${this.year}`); // } } // All of Car instances wil be refer to same this function object Car.prototype.toString = function () { console.
+      
+    "><link rel=canonical href=https://hohai.github.io/posts/advance-js-3/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><meta property="og:url" content="https://hohai.github.io/posts/advance-js-3/"><meta property="og:site_name" content="HoHai's website"><meta property="og:title" content="Advance Javascript (Part 3)"><meta property="og:description" content="Contructors with Prototypes # class was introducted in ES2015 class Car { constructor(model, year) { this.model = model; this.year = year; } // Should be move to Car.prototype object then all of Car instances will // be refer to same this function object // toString() { // console.log(`${this.model} has ${this.year}`); // } } // All of Car instances wil be refer to same this function object Car.prototype.toString = function () { console."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-12-21T07:07:07+01:00"><meta property="article:modified_time" content="2023-12-21T07:07:07+01:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Advance Javascript (Part 3)"><meta name=twitter:description content="Contructors with Prototypes # class was introducted in ES2015 class Car { constructor(model, year) { this.model = model; this.year = year; } // Should be move to Car.prototype object then all of Car instances will // be refer to same this function object // toString() { // console.log(`${this.model} has ${this.year}`); // } } // All of Car instances wil be refer to same this function object Car.prototype.toString = function () { console."><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","articleSection":"Posts","name":"Advance Javascript (Part 3)","headline":"Advance Javascript (Part 3)","abstract":"Contructors with Prototypes # class was introducted in ES2015 class Car { constructor(model, year) { this.model = model; this.year = year; } \/\/ Should be move to Car.prototype object then all of Car instances will \/\/ be refer to same this function object \/\/ toString() { \/\/ console.log(\u0060${this.model} has ${this.year}\u0060); \/\/ } } \/\/ All of Car instances wil be refer to same this function object Car.prototype.toString = function () { console.","inLanguage":"en","url":"https:\/\/hohai.github.io\/posts\/advance-js-3\/","author":{"@type":"Person","name":"HoHai"},"copyrightYear":"2023","dateCreated":"2023-12-21T07:07:07\u002b01:00","datePublished":"2023-12-21T07:07:07\u002b01:00","dateModified":"2023-12-21T07:07:07\u002b01:00","mainEntityOfPage":"true","wordCount":"2404"}</script><meta name=author content="HoHai"><link href=https://twitter.com/username rel=me></head><body class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral"><div id=the-top class="absolute flex self-center"><a class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span>Skip to main content</a></div><header class="py-6 font-semibold text-neutral-900 print:hidden sm:py-10 dark:text-neutral"><nav class="flex items-start justify-between sm:items-center"><div class="flex flex-row items-center"><a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2" rel=me href=/>HoHai&rsquo;s website</a></div><ul class="flex list-none flex-col text-end sm:flex-row"><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/posts/ title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Posts</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Topics</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=https://github.com/jpanther/congo title target=_blank><span class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentcolor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6.0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6.0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3.0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1.0-6.2-.3-40.4-.3-61.4.0.0-70 15-84.7-29.8.0.0-11.4-29.1-27.8-36.6.0.0-22.9-15.7 1.6-15.4.0.0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5.0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9.0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4.0 33.7-.3 75.4-.3 83.6.0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6.0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9.0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"></li></ul></nav></header><div class="relative flex grow flex-col"><main id=main-content class=grow><article><header class=max-w-prose><h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Advance Javascript (Part 3)</h1><div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400"><div class="flex flex-row flex-wrap items-center"><time datetime="2023-12-21 07:07:07 +0100 +0100">21 December 2023</time><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">12 mins</span></div></div></header><section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row"><div class="min-h-0 min-w-0 max-w-prose grow"><h3 id=contructors-with-prototypes class="relative group">Contructors with Prototypes <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#contructors-with-prototypes aria-label=Anchor>#</a></span></h3><ul><li>class was introducted in ES2015</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Car</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>constructor</span>(<span style=color:#a6e22e>model</span>, <span style=color:#a6e22e>year</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>model</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>model</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>year</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>year</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Should be move to Car.prototype object then all of Car instances will
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// be refer to same this function object
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// toString() {
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   console.log(`${this.model} has ${this.year}`);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// }
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span><span style=display:flex><span><span style=color:#75715e>// All of Car instances wil be refer to same this function object
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>Car</span>.<span style=color:#a6e22e>prototype</span>.<span style=color:#a6e22e>toString</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>model</span><span style=color:#e6db74>}</span><span style=color:#e6db74> has </span><span style=color:#e6db74>${</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>year</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><h3 id=module-pattern-closure class="relative group">Module pattern (Closure) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#module-pattern-closure aria-label=Anchor>#</a></span></h3><p><figure><img src=./imgs/module-closure.png alt="Alt text" class="mx-auto my-0 rounded-md"></figure></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>F</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>obj1</span> <span style=color:#f92672>=</span> { <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;hohai&#34;</span>, <span style=color:#a6e22e>age</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>40</span> };
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>value1</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// At F2 CREATION (NOT CALLING), [[scopes]] of F2 will be capture
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>F2</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;In F2, refer to outer scopes: obj1, value1 &#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>obj1</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>value1</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>obj1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>value1</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;Finished Called F2&#34;</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>F3</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;In F3, refer to outer scopes: F2, value1 &#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>F2</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>value1</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>value1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;Finished Called F3&#34;</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//   return obj1; { name: &#34;hohai&#34;, age: 40 }
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   return value1; // 123
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>F2</span>;
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//   return F3();
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// var test = F();
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// console.log(test());
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// console.log(test());
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// console.log(test());
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>test</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>F</span>();
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>test</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>test</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>test</span>);
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myModule</span> <span style=color:#f92672>=</span> (<span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>count</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>increment</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#f92672>++</span><span style=color:#a6e22e>count</span>;
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>reset</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>count</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>count</span>;
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>})();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>myModule</span>.<span style=color:#a6e22e>count</span>); <span style=color:#75715e>// Undefine
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>myModule</span>.<span style=color:#a6e22e>increment</span>());
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>myModule</span>.<span style=color:#a6e22e>increment</span>());
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>myModule</span>.<span style=color:#a6e22e>increment</span>());
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>myModule</span>.<span style=color:#a6e22e>reset</span>());
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>myModule</span>.<span style=color:#a6e22e>increment</span>());
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>myModule</span>.<span style=color:#a6e22e>increment</span>());
+</span></span></code></pre></div><p><strong>Note</strong>:
+<a href=https://jesseduffield.com/Everything-I-Wish-I-Knew-About-JS-Scoping-A-Week-Ago/ target=_blank rel=noreferrer>https://jesseduffield.com/Everything-I-Wish-I-Knew-About-JS-Scoping-A-Week-Ago/</a></p><ul><li>The module is load as an object, we can view the content of code as logic of this object.</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>// In module `test4.mjs`
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>count</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>increaseAndMakeConsumerCounter</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>count</span><span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>consume</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>reduceAndConsoleConsumer</span>,
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>reduceAndConsoleConsumer</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`Current count is: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>count</span><span style=color:#e6db74>}</span><span style=color:#e6db74>. Then we will reduce it`</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>count</span><span style=color:#f92672>--</span>;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> { <span style=color:#a6e22e>increaseAndMakeConsumerCounter</span> };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// In `usage-test4.mjs`
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>increaseAndMakeConsumerCounter</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./test4.mjs&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>consumer1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>increaseAndMakeConsumerCounter</span>();
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>consumer2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>increaseAndMakeConsumerCounter</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>consumer1</span>.<span style=color:#a6e22e>consume</span>(); <span style=color:#75715e>// Current count is: 2. Then we will reduce it
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>consumer2</span>.<span style=color:#a6e22e>consume</span>(); <span style=color:#75715e>// Current count is: 1. Then we will reduce it
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>consumer1</span>.<span style=color:#a6e22e>consume</span>(); <span style=color:#75715e>// Current count is: 0. Then we will reduce it
+</span></span></span></code></pre></div><h3 id=reavealing-module-pattern class="relative group">Reavealing Module Pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#reavealing-module-pattern aria-label=Anchor>#</a></span></h3><ul><li>In <code>pattern-module.mjs</code>: export the object wrapping all of methods, values we want to expose to other modules</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>counter</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>PRIVATE_VALUES</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;HOHAI&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>increaseFn</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>counter</span><span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>getCurrenFn</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>counter</span>;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>realingModule</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>PRIVATE_VALUES</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>incFunc</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>increaseFn</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>getCurrentFunc</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>getCurrenFn</span>,
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>realingModule</span>;
+</span></span></code></pre></div><ul><li>In the <code>usage-1.mjs</code>:<ul><li>Try to import the object <code>realingModule</code> then try to run method in this object</li><li>Try to run methods <code>run4Times</code></li><li>Export <code>run4Times</code> method object that other can be use</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>realingModule</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./pattern-module.mjs&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>run4Times</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>realingModule</span>.<span style=color:#a6e22e>incFunc</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>realingModule</span>.<span style=color:#a6e22e>incFunc</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>realingModule</span>.<span style=color:#a6e22e>incFunc</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>realingModule</span>.<span style=color:#a6e22e>incFunc</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>realingModule</span>.<span style=color:#a6e22e>getCurrentFunc</span>());
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>run4Times</span>();
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> { <span style=color:#a6e22e>run4Times</span>, <span style=color:#a6e22e>realingModule</span> };
+</span></span></code></pre></div><ul><li>In <code>usage-2.mjs</code> try to import <code>run4Times</code> from <code>usage-1.mjs</code>:<ul><li><code>run4Times()</code> in <code>usage-1.mjs</code> will be executed when import</li><li><code>run4Times()</code> in <code>usage-2.mjs</code> will be execute (and modify the same object <code>realingModule</code>)</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>realingModule</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./pattern-module.mjs&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>realingModule</span> <span style=color:#a6e22e>as</span> <span style=color:#a6e22e>realingModuleM1</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./usage-1.mjs&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>realingModule</span>.<span style=color:#a6e22e>getCurrentFunc</span>());
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>realingModuleM1</span> <span style=color:#f92672>===</span> <span style=color:#a6e22e>realingModule</span>); <span style=color:#75715e>// True: SAME OBJECT
+</span></span></span></code></pre></div><h3 id=pubsub-pattern class="relative group">Pub/Sub pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#pubsub-pattern aria-label=Anchor>#</a></span></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>pubsub</span> <span style=color:#f92672>=</span> {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>q</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>topics</span> <span style=color:#f92672>=</span> {};
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>subUid</span> <span style=color:#f92672>=</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Publish or broadcast events of interest with a specific topic name and arguments such as the data to pass long
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>q</span>.<span style=color:#a6e22e>publish</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>topic</span>, <span style=color:#a6e22e>args</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>topics</span>[<span style=color:#a6e22e>topic</span>]) <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>subcribers</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>topics</span>[<span style=color:#a6e22e>topic</span>];
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>len</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>subcribers</span> <span style=color:#f92672>?</span> <span style=color:#a6e22e>subcribers</span>.<span style=color:#a6e22e>length</span> <span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> (<span style=color:#a6e22e>len</span><span style=color:#f92672>--</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>subcribers</span>[<span style=color:#a6e22e>len</span>].<span style=color:#a6e22e>func</span>(<span style=color:#a6e22e>topic</span>, <span style=color:#a6e22e>args</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>;
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Subcribe to events of interest with a specific topic name and callback function, to be executed when topic/event is observerd
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>q</span>.<span style=color:#a6e22e>subcribe</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>topic</span>, <span style=color:#a6e22e>func</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>topics</span>[<span style=color:#a6e22e>topic</span>]) <span style=color:#a6e22e>topics</span>[<span style=color:#a6e22e>topic</span>] <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>token</span> <span style=color:#f92672>=</span> (<span style=color:#f92672>++</span><span style=color:#a6e22e>subUid</span>).<span style=color:#a6e22e>toString</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>topics</span>[<span style=color:#a6e22e>topic</span>].<span style=color:#a6e22e>push</span>({
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>token</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>token</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>func</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>func</span>,
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>token</span>;
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Unscribe
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>q</span>.<span style=color:#a6e22e>unsubcribe</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>token</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>topic</span> <span style=color:#66d9ef>in</span> <span style=color:#a6e22e>topics</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>topics</span>[<span style=color:#a6e22e>topic</span>].<span style=color:#a6e22e>length</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>j</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>topics</span>[<span style=color:#a6e22e>topic</span>][<span style=color:#a6e22e>i</span>].<span style=color:#a6e22e>token</span> <span style=color:#f92672>===</span> <span style=color:#a6e22e>token</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>topics</span>[<span style=color:#a6e22e>topic</span>].<span style=color:#a6e22e>splice</span>(<span style=color:#a6e22e>i</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>token</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>;
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>})(<span style=color:#a6e22e>pubsub</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Example 1: Test basic use of publishers and subcribers
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>/*
+</span></span></span><span style=display:flex><span><span style=color:#75715e>var testHandler = function (topic, data) {
+</span></span></span><span style=display:flex><span><span style=color:#75715e>  console.log(topic + &#34;: &#34; + data);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>};
+</span></span></span><span style=display:flex><span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>var testSubcription = pubsub.subcribe(&#34;example1&#34;, testHandler);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>pubsub.publish(&#34;example1&#34;, &#34;Hello world !&#34;);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>pubsub.publish(&#34;example1&#34;, [&#34;Test&#34;, &#34;a&#34;, &#34;b&#34;]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>pubsub.publish(&#34;example1&#34;, { color: &#34;blue&#34;, bg: &#34;yellow&#34; });
+</span></span></span><span style=display:flex><span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>console.log(testSubcription);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>*/</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Example 2: UI notification using pub/sub
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>/*
+</span></span></span><span style=display:flex><span><span style=color:#75715e>- Subriber is listening the topic &#39;dataUpdated&#39; when new stock information is available
+</span></span></span><span style=display:flex><span><span style=color:#75715e>- Trigger &#39;gridUpdate&#39;
+</span></span></span><span style=display:flex><span><span style=color:#75715e>*/</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>grid</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>refreshData</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;retrieved the lastest data from data cache&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;updated grid component&#34;</span>);
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>updateCounter</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;data last updated at...: &#34;</span>);
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>gridUpdate</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>topic</span>, <span style=color:#a6e22e>data</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>grid</span>.<span style=color:#a6e22e>refreshData</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>grid</span>.<span style=color:#a6e22e>updateCounter</span>();
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>dataSubcription</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>pubsub</span>.<span style=color:#a6e22e>subcribe</span>(<span style=color:#e6db74>&#34;dataUpdated&#34;</span>, <span style=color:#a6e22e>gridUpdate</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>pubsub</span>.<span style=color:#a6e22e>publish</span>(<span style=color:#e6db74>&#34;dataUpdated&#34;</span>, <span style=color:#e6db74>&#34;New stock data avaialble&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>pubsub</span>.<span style=color:#a6e22e>publish</span>(<span style=color:#e6db74>&#34;dataUpdated&#34;</span>, <span style=color:#e6db74>&#34;New stock data avaialble&#34;</span>);
+</span></span></code></pre></div><h3 id=pubsub-pattern-other-implementation class="relative group">Pub/Sub pattern (other implementation) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#pubsub-pattern-other-implementation aria-label=Anchor>#</a></span></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>event</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>list</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Map</span>(),
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>on</span>(<span style=color:#a6e22e>eventType</span>, <span style=color:#a6e22e>eventAction</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>list</span>.<span style=color:#a6e22e>has</span>(<span style=color:#a6e22e>eventType</span>) <span style=color:#f92672>||</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>list</span>.<span style=color:#a6e22e>set</span>(<span style=color:#a6e22e>eventType</span>, []);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>list</span>.<span style=color:#a6e22e>get</span>(<span style=color:#a6e22e>eventType</span>)) <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>list</span>.<span style=color:#a6e22e>get</span>(<span style=color:#a6e22e>eventType</span>).<span style=color:#a6e22e>push</span>(<span style=color:#a6e22e>eventAction</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>;
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>emit</span>(<span style=color:#a6e22e>eventType</span>, ...<span style=color:#a6e22e>args</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>list</span>.<span style=color:#a6e22e>get</span>(<span style=color:#a6e22e>eventType</span>) <span style=color:#f92672>&amp;&amp;</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>list</span>.<span style=color:#a6e22e>get</span>(<span style=color:#a6e22e>eventType</span>).<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>cb</span>) =&gt; {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>cb</span>(...<span style=color:#a6e22e>args</span>);
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>event</span>;
+</span></span></code></pre></div><h3 id=prototype-pattern class="relative group">Prototype pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#prototype-pattern aria-label=Anchor>#</a></span></h3><p>Copy the properties/attribute of object</p><ul><li>Use <code>Object.create</code></li><li>Or using <code>prototype</code><ul><li><code>makeCopy</code> = <code>makeCopy2</code> = <code>Object.create</code></li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>makeCopy</span> <span style=color:#f92672>=</span> (<span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>F</span>() {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>proto</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>F</span>.<span style=color:#a6e22e>prototype</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>proto</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>F</span>();
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>})();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>makeCopy2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>proto</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>F</span>() {}
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>F</span>.<span style=color:#a6e22e>prototype</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>proto</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>F</span>();
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// var car3 = Object.create(car0);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>car3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>makeCopy</span>(<span style=color:#a6e22e>car0</span>);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>car4</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>makeCopy2</span>(<span style=color:#a6e22e>car0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>car3</span>.<span style=color:#a6e22e>feature1</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>car4</span>.<span style=color:#a6e22e>feature1</span>);
+</span></span></code></pre></div><ul><li>Implement Protytpe pattern by class</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>beget</span> <span style=color:#f92672>=</span> () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>F</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>constructor</span>() {}
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (<span style=color:#a6e22e>proto</span>) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>F</span>.<span style=color:#a6e22e>prototype</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>proto</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>F</span>();
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><h3 id=flyweight-pattern class="relative group">Flyweight pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#flyweight-pattern aria-label=Anchor>#</a></span></h3><p>Consider Library Book System Management</p><ul><li>Manager checkout of books</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Book</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>id</span>, <span style=color:#a6e22e>title</span>, <span style=color:#a6e22e>checkoutMember</span>, <span style=color:#a6e22e>dueReturnDate</span>, <span style=color:#a6e22e>availabity</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Instrict information
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>id</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>title</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>title</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Exstrict information
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>checkoutMember</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>checkoutMember</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>dueReturnDate</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>dueReturnDate</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>availabity</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>availabity</span>;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>Book</span>.<span style=color:#a6e22e>prototype</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>getTitle</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>title</span>;
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>updateCheckoutStatus</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>bookID</span>, <span style=color:#a6e22e>newStatus</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>bookID</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>availabity</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>newStatus</span>;
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>When the library have many books &#187; the data of book will be over memory</p><ul><li>Then we can seperate <code>instrict</code>/<code>extrict</code> information of a book</li><li><strong>Becarefull</strong> we have 2 checkout versions. The <code>prototype</code> version will be more effective than the object version because it save the memory (remove the function objects by sharing the same one)</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Book</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>id</span>, <span style=color:#a6e22e>title</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Instrict information
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>id</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>title</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>title</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Exstrict information
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   this.checkoutMember = checkoutMember;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   this.dueReturnDate = dueReturnDate;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   this.availabity = availabity;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>Book</span>.<span style=color:#a6e22e>prototype</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>getTitle</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>title</span>;
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//   updateCheckoutStatus: function (bookID, newStatus) {
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//     this.id = bookID;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//     this.availabity = newStatus;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   },
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Book</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>id</span>, <span style=color:#a6e22e>title</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Instrict information
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>id</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>title</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>title</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Exstrict information
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   this.checkoutMember = checkoutMember;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   this.dueReturnDate = dueReturnDate;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   this.availabity = availabity;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>Book</span>.<span style=color:#a6e22e>prototype</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>getTitle</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>title</span>;
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//   updateCheckoutStatus: function (bookID, newStatus) {
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//     this.id = bookID;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//     this.availabity = newStatus;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//   },
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>BookCheckout</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>book</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>checkoutMember</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; is checkout&#34;</span>);
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dueReturnDate</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>date</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; will be return at : &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>date</span>);
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>BookCheckoutV2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>book</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>book</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>book</span>;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>BookCheckoutV2</span>.<span style=color:#a6e22e>prototype</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>checkoutMember</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; is checkout&#34;</span>);
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>dueReturnDate</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>date</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; will be return at : &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>date</span>);
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>hohaiBook</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Book</span>(<span style=color:#ae81ff>123</span>, <span style=color:#e6db74>&#34;HoHai Book&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>BookCheckout</span>(<span style=color:#a6e22e>hohaiBook</span>).<span style=color:#a6e22e>checkoutMember</span>();
+</span></span><span style=display:flex><span><span style=color:#a6e22e>BookCheckout</span>(<span style=color:#a6e22e>hohaiBook</span>).<span style=color:#a6e22e>dueReturnDate</span>(<span style=color:#66d9ef>new</span> Date());
+</span></span><span style=display:flex><span><span style=color:#75715e>// There are 2 objects
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>BookCheckout</span>(<span style=color:#a6e22e>hohaiBook</span>) <span style=color:#f92672>===</span> <span style=color:#a6e22e>BookCheckout</span>(<span style=color:#a6e22e>hohaiBook</span>)); <span style=color:#75715e>// Return false
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// And there are 2 function objects do the same thing &gt;&gt; Not effective
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>BookCheckout</span>(<span style=color:#a6e22e>hohaiBook</span>).<span style=color:#a6e22e>checkoutMember</span> <span style=color:#f92672>===</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>BookCheckout</span>(<span style=color:#a6e22e>hohaiBook</span>).<span style=color:#a6e22e>checkoutMember</span>
+</span></span><span style=display:flex><span>); <span style=color:#75715e>// return false
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>bookCheckoutV2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>BookCheckoutV2</span>(<span style=color:#a6e22e>hohaiBook</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>bookCheckoutV2</span>.<span style=color:#a6e22e>checkoutMember</span>();
+</span></span><span style=display:flex><span><span style=color:#a6e22e>bookCheckoutV2</span>.<span style=color:#a6e22e>dueReturnDate</span>(<span style=color:#66d9ef>new</span> Date());
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>bookCheckoutV2Other</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>BookCheckoutV2</span>(<span style=color:#a6e22e>hohaiBook</span>);
+</span></span><span style=display:flex><span><span style=color:#75715e>// There are 2 objects
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>bookCheckoutV2</span> <span style=color:#f92672>===</span> <span style=color:#a6e22e>bookCheckoutV2Other</span>);
+</span></span><span style=display:flex><span><span style=color:#75715e>// But refer same function objects (due refer same prototype property)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>bookCheckoutV2</span>.<span style=color:#a6e22e>checkoutMember</span> <span style=color:#f92672>===</span> <span style=color:#a6e22e>bookCheckoutV2Other</span>.<span style=color:#a6e22e>checkoutMember</span>
+</span></span><span style=display:flex><span>);
+</span></span></code></pre></div><h3 id=pattern-mvvm class="relative group">Pattern MVVM <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#pattern-mvvm aria-label=Anchor>#</a></span></h3><ul><li>Implement <code>pub/sub</code> patter (<code>observable</code>)</li><li>Implement decorator using <code>prototype</code><ul><li>The <code>this</code> keyword will refer to the returned object (after <code>new</code> later). To refer <code>this</code> object we created refer variable <code>self</code> to refer <code>this</code> object, then we can use in the nested method</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>// May be we can improve by using prototype property to attact the
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// methods (subcribe, notify).
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>observable</span>(<span style=color:#a6e22e>value</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Notify to subcribles when change
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// Automatic detect dependencies
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// I will make simple implementation of KnockoutJS
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>subcribers</span> <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>value</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>notify</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>newValue</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>subcribers</span>.<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>fn</span>) =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>fn</span>(<span style=color:#a6e22e>currentValue</span>, <span style=color:#a6e22e>newValue</span>);
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>currentValue</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>subcribe</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>fn</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>subcribers</span>.<span style=color:#a6e22e>push</span>(<span style=color:#a6e22e>fn</span>);
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>change</span>(<span style=color:#a6e22e>newValue</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>notify</span>(<span style=color:#a6e22e>newValue</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>newValue</span>;
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>observableV2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>value</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Init the data only
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>value</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>subcribers</span> <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Attact behaviors only
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>observableV2</span>.<span style=color:#a6e22e>prototype</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>subcribe</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>fn</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>subcribers</span>.<span style=color:#a6e22e>push</span>(<span style=color:#a6e22e>fn</span>);
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>change</span>(<span style=color:#a6e22e>newValue</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>self</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>; <span style=color:#75715e>// Litte hack, this will refer to the returned object
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>notify</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>newValue</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>subcribers</span>.<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>fn</span>) =&gt; {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fn</span>(<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>currentValue</span>, <span style=color:#a6e22e>newValue</span>);
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>notify</span>(<span style=color:#a6e22e>newValue</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>newValue</span>;
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Model layer: contain the data only. Don&#39;t have format feature
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// The format features shoule be put in View layer
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Todo</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>content</span>, <span style=color:#a6e22e>done</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>content</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>observable</span>(<span style=color:#a6e22e>content</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>done</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>observable</span>(<span style=color:#a6e22e>done</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>editing</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>observable</span>(<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>TodoV2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>content</span>, <span style=color:#a6e22e>done</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>content</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>observableV2</span>(<span style=color:#a6e22e>content</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>done</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>observableV2</span>(<span style=color:#a6e22e>done</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>editing</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>observableV2</span>(<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>todo1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Todo</span>(<span style=color:#e6db74>&#34;A&#34;</span>, <span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>todo1</span>.<span style=color:#a6e22e>content</span>.<span style=color:#a6e22e>subcribe</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>currentValue</span>, <span style=color:#a6e22e>newValue</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Function 1: on &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; changed to &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>newValue</span>);
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span><span style=color:#a6e22e>todo1</span>.<span style=color:#a6e22e>content</span>.<span style=color:#a6e22e>subcribe</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>currentValue</span>, <span style=color:#a6e22e>newValue</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Function 2: on &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; changed to &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>newValue</span>);
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>todo1</span>.<span style=color:#a6e22e>content</span>.<span style=color:#a6e22e>change</span>(<span style=color:#e6db74>&#34;B&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>todo2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>TodoV2</span>(<span style=color:#e6db74>&#34;A&#34;</span>, <span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>todo2</span>.<span style=color:#a6e22e>content</span>.<span style=color:#a6e22e>subcribe</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>currentValue</span>, <span style=color:#a6e22e>newValue</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Function 1: on &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; changed to &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>newValue</span>);
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span><span style=color:#a6e22e>todo2</span>.<span style=color:#a6e22e>content</span>.<span style=color:#a6e22e>subcribe</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>currentValue</span>, <span style=color:#a6e22e>newValue</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Function 2: on &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; changed to &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>newValue</span>);
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>todo2</span>.<span style=color:#a6e22e>content</span>.<span style=color:#a6e22e>change</span>(<span style=color:#e6db74>&#34;B&#34;</span>);
+</span></span></code></pre></div><h3 id=namespace-injection class="relative group">Namespace injection <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#namespace-injection aria-label=Anchor>#</a></span></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>ns1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>ns1</span> <span style=color:#f92672>||</span> {};
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>ns2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>ns2</span> <span style=color:#f92672>||</span> {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>moduleCreator</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>val</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>val</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>val</span> <span style=color:#f92672>||</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Inject methods of `this` module/namespace object
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>inc</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#f92672>++</span><span style=color:#a6e22e>val</span>;
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>reset</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>val</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>moduleCreator</span>.<span style=color:#a6e22e>call</span>(<span style=color:#a6e22e>ns1</span>); <span style=color:#75715e>// `this` will be ns1
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>moduleCreator</span>.<span style=color:#a6e22e>call</span>(<span style=color:#a6e22e>ns2</span>, <span style=color:#ae81ff>5000</span>); <span style=color:#75715e>// `this` will be ns2
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>ns1</span>.<span style=color:#a6e22e>inc</span>());
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>ns2</span>.<span style=color:#a6e22e>inc</span>());
+</span></span></code></pre></div><h3 id=module-pattern-in-jquery class="relative group">Module pattern in jQuery <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#module-pattern-in-jquery aria-label=Anchor>#</a></span></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>// Module Pattern
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// Private API: hold any code we don&#39;t wish to expose
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// Public API: will be allowed to interact
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>exports</span>, <span style=color:#a6e22e>$</span>, <span style=color:#66d9ef>undefined</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Plugin</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Our private API
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>priv</span> <span style=color:#f92672>=</span> {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Our public API
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Plugin</span> <span style=color:#f92672>=</span> {};
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>defaults</span> <span style=color:#f92672>=</span> {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Private options and methods
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>priv</span>.<span style=color:#a6e22e>options</span> <span style=color:#f92672>=</span> {};
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>priv</span>.<span style=color:#a6e22e>method1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {};
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>priv</span>.<span style=color:#a6e22e>method2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Public methods
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>Plugin</span>.<span style=color:#a6e22e>method1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {};
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Plugin</span>.<span style=color:#a6e22e>method2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Public initialization
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>Plugin</span>.<span style=color:#a6e22e>init</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>options</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>extend</span>(<span style=color:#a6e22e>priv</span>.<span style=color:#a6e22e>options</span>, <span style=color:#a6e22e>defaults</span>, <span style=color:#a6e22e>options</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>priv</span>.<span style=color:#a6e22e>method1</span>();
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>Plugin</span>;
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Return the public API (Plugin) we want to expose
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>Plugin</span>;
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>exports</span>.<span style=color:#a6e22e>Plugin</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>Plugin</span>;
+</span></span><span style=display:flex><span>})(<span style=color:#66d9ef>this</span>, <span style=color:#a6e22e>jQuery</span>);
+</span></span></code></pre></div><h3 id=lazy-initialization-pattern-in-jquery class="relative group">Lazy Initialization Pattern (in jQuery) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#lazy-initialization-pattern-in-jquery aria-label=Anchor>#</a></span></h3><ul><li><code>ready</code> function will be called when DOM is ready</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>$</span>(document).<span style=color:#a6e22e>ready</span>(<span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// The ajax request won&#39;t attempt to execute until the DOM is ready
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>jqxhr</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>ajax</span>({
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>url</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;http://domain.com/api&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>data</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;some data&#34;</span>,
+</span></span><span style=display:flex><span>  }).<span style=color:#a6e22e>done</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>data</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>$</span>(<span style=color:#e6db74>&#34;.status&#34;</span>).<span style=color:#a6e22e>html</span>(<span style=color:#e6db74>&#34;content loaded&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Data output: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>  });
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><h3 id=composite-pattern-in-jquery class="relative group">Composite Pattern (in jQuery) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#composite-pattern-in-jquery aria-label=Anchor>#</a></span></h3><ul><li>Describes a <strong>group of objects</strong> that can be treated in same way <strong>single instance</strong> of an object</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>// Single elements
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>$</span>(<span style=color:#e6db74>&#34;#singleItem&#34;</span>).<span style=color:#a6e22e>addClass</span>(<span style=color:#e6db74>&#34;active&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>$</span>(<span style=color:#e6db74>&#34;#containerItem&#34;</span>).<span style=color:#a6e22e>addClass</span>(<span style=color:#e6db74>&#34;active&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Collection of elements
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>$</span>(<span style=color:#e6db74>&#34;div&#34;</span>).<span style=color:#a6e22e>addClass</span>(<span style=color:#e6db74>&#34;active&#34;</span>);
+</span></span></code></pre></div><h3 id=adapter-pattern-in-jquery class="relative group">Adapter Pattern (in jQuery) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#adapter-pattern-in-jquery aria-label=Anchor>#</a></span></h3><ul><li>Translate <strong>an interface</strong> a class into an <strong>interface compatible</strong> with a specific system</li><li>Example of jQuery is usage <code>$(el).css</code> method</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>$</span>(<span style=color:#e6db74>&#34;.container&#34;</span>).<span style=color:#a6e22e>css</span>({ <span style=color:#a6e22e>opacity</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0.5</span> });
+</span></span></code></pre></div><h3 id=facade-pattern-in-jquery class="relative group">Facade Pattern (in jQuery) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#facade-pattern-in-jquery aria-label=Anchor>#</a></span></h3><ul><li>An object providers a simpler interface</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>get</span>(<span style=color:#a6e22e>url</span>, <span style=color:#a6e22e>data</span>, <span style=color:#a6e22e>callback</span>, <span style=color:#a6e22e>dataType</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>post</span>(<span style=color:#a6e22e>url</span>, <span style=color:#a6e22e>data</span>, <span style=color:#a6e22e>callback</span>, <span style=color:#a6e22e>dataType</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Translate like these
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>get</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>url</span>, <span style=color:#a6e22e>data</span>, <span style=color:#a6e22e>callback</span>, <span style=color:#a6e22e>dataType</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>ajax</span>({
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;GET&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>url</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>url</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>data</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>data</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dataType</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>dataType</span>,
+</span></span><span style=display:flex><span>  }).<span style=color:#a6e22e>done</span>(<span style=color:#a6e22e>callback</span>);
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>post</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>url</span>, <span style=color:#a6e22e>data</span>, <span style=color:#a6e22e>callback</span>, <span style=color:#a6e22e>dataType</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>ajax</span>({
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;POST&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>url</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>url</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>data</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>data</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dataType</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>dataType</span>,
+</span></span><span style=display:flex><span>  }).<span style=color:#a6e22e>done</span>(<span style=color:#a6e22e>callback</span>);
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><h3 id=observer-pattern-in-jquery class="relative group">Observer Pattern (in jQuery) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#observer-pattern-in-jquery aria-label=Anchor>#</a></span></h3><ul><li><strong>A subject (the Publisher)</strong> keep list of its dependencies, and notify them automatically anytime something interesting happens</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>// Equivalent to subcribe(topicName, callback)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>$</span>(document).<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;topicName&#34;</span>, <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Perform some behavior
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>});
+</span></span><span style=display:flex><span><span style=color:#75715e>// Equivalent to publish(topicName)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>$</span>(document).<span style=color:#a6e22e>trigger</span>(<span style=color:#e6db74>&#34;topicName&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Equivalent to unsubcribe(topicName)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>$</span>(document).<span style=color:#a6e22e>off</span>(<span style=color:#e6db74>&#34;topicName&#34;</span>);
+</span></span></code></pre></div><h3 id=iterator-pattern-in-jquery class="relative group">Iterator Pattern (in jQuery) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#iterator-pattern-in-jquery aria-label=Anchor>#</a></span></h3><ul><li>Traverse all of elements of a collection</li><li>We can implement by self</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>$</span> <span style=color:#f92672>=</span> {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>each</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>arr</span>, <span style=color:#a6e22e>fn</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>arr</span>.<span style=color:#a6e22e>length</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fn</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>]);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>each</span>([<span style=color:#e6db74>&#34;hohai&#34;</span>, <span style=color:#e6db74>&#34;john&#34;</span>], <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>index</span>, <span style=color:#a6e22e>value</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>index</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>value</span>);
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><h3 id=strategy-pattern class="relative group">Strategy Pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#strategy-pattern aria-label=Anchor>#</a></span></h3><ul><li>Select a particular algorihm at runtime</li><li>Demo 1: we can attach the new property <code>toggle</code> (function) of an object.<br>The <code>toggle</code> function will change (revert) status of <code>currentValue</code> which is local state in module scope (<code>setupToggle</code>).</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>obj</span> <span style=color:#f92672>=</span> {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// We can setup different algorithms (toogleFn)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setupToggle</span>(<span style=color:#a6e22e>obj</span>, <span style=color:#a6e22e>initValue</span>, <span style=color:#a6e22e>toogleFn</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>initValue</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>toggle</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>currentValue</span> <span style=color:#f92672>=</span> <span style=color:#f92672>!</span><span style=color:#a6e22e>currentValue</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>toogleFn</span>(<span style=color:#a6e22e>currentValue</span>);
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>setupToggle</span>(<span style=color:#a6e22e>obj</span>, <span style=color:#66d9ef>false</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>value</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;The current of object is: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>value</span>);
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>toggle</span>();
+</span></span><span style=display:flex><span><span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>toggle</span>();
+</span></span><span style=display:flex><span><span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>toggle</span>();
+</span></span></code></pre></div><h3 id=promise-implementation class="relative group">Promise Implementation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#promise-implementation aria-label=Anchor>#</a></span></h3><p>Refer to: <a href=https://github.com/kriskowal/q/blob/v1/design/README.md target=_blank rel=noreferrer>https://github.com/kriskowal/q/blob/v1/design/README.md</a></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>var</span> Promise <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>isPromise</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>value</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>value</span> <span style=color:#66d9ef>instanceof</span> Promise;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>defer</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>pending</span> <span style=color:#f92672>=</span> [],
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>value</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>promise</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Promise();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>promise</span>.<span style=color:#a6e22e>then</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>callback</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>pending</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>pending</span>.<span style=color:#a6e22e>push</span>(<span style=color:#a6e22e>callback</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>callback</span>(<span style=color:#a6e22e>value</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>resolve</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>_value</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>pending</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>_value</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>len</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>pending</span>.<span style=color:#a6e22e>length</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>len</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>callback</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>pending</span>[<span style=color:#a6e22e>i</span>];
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>callback</span>(<span style=color:#a6e22e>value</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>pending</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>undefined</span>;
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>promise</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>promise</span>,
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>longOperation</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>d</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>defer</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>d</span>.<span style=color:#a6e22e>promise</span>.<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>setTimeout</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>d</span>.<span style=color:#a6e22e>resolve</span>(<span style=color:#ae81ff>123</span>);
+</span></span><span style=display:flex><span>  }, <span style=color:#ae81ff>2000</span>);
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>longOperation</span>();
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;You can see this line right now !!!&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#75715e>// You can see this line right now !!!
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// 123
+</span></span></span></code></pre></div><pre tabindex=0><code class=language-mermaid data-lang=mermaid>  graph LR;
+    A0[&#34;defer&#34;]-.on call.-&gt;A[&#34;defer()&#34;]
+    A--&gt;B[&#34;resolve-func&#34;]
+
+    A--&gt;C[&#34;{promise: then-func}&#34;]
+    C-.on call.-&gt;D[&#34;then-func()&#34;]
+    E[&#34;callback&#34;]--&gt;D
+
+    D--&gt;F[&#34;pending&#34;]
+    B-.on call.-&gt;G[&#34;resolve-func()&#34;]
+    H[&#34;value&#34;]--&gt;G
+    F--&gt;G
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ref</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>value</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>value</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>value</span>.<span style=color:#a6e22e>then</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#34;function&#34;</span>) <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>value</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>then</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>callback</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>ref</span>(<span style=color:#a6e22e>callback</span>(<span style=color:#a6e22e>value</span>));
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>ref</span>(<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>then</span>((<span style=color:#a6e22e>v</span>) =&gt; <span style=color:#a6e22e>v</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>then</span>((<span style=color:#a6e22e>v</span>) =&gt; <span style=color:#a6e22e>v</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>then</span>((<span style=color:#a6e22e>v</span>) =&gt; <span style=color:#a6e22e>v</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>); <span style=color:#75715e>// 4
+</span></span></span></code></pre></div><pre tabindex=0><code class=language-mermaid data-lang=mermaid>  graph LR;
+    A[&#34;ref&#34;]-.make call.-&gt;B[&#34;ref(.)&#34;];
+    C[&#34;value&#34;]-.push.-&gt;B;
+
+    B--return--&gt;D[&#34;{then}&#34;]
+
+
+    D-.make call.-&gt;E[&#34;{then(.)}&#34;]
+    F[&#34;callback&#34;]-.push.-&gt;E
+
+    E--value=callback(.)--&gt;B
+</code></pre></div></section><footer class="max-w-prose pt-8 print:hidden"><div class=flex><div class=place-self-center><div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div><div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">HoHai</div><div class="text-sm text-neutral-700 dark:text-neutral-400">A little bit about me</div><div class="text-2xl sm:text-lg"><div class="flex flex-wrap text-neutral-400 dark:text-neutral-500"><a class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400" style=will-change:transform href=https://twitter.com/username target=_blank aria-label=Twitter rel="me noopener noreferrer"><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645.0 138.72-105.583 298.558-298.558 298.558-59.452.0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055.0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421.0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391.0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04.0-57.828 46.782-104.934 104.934-104.934 30.213.0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></span></a></div></div></div></div><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span><a class="group flex" href=/posts/advance-js-2/><span class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&larr;</span><span class="ltr:hidden rtl:inline">&rarr;</span></span>
+<span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">Advance Javascript (Part 2)</span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2023-12-15 07:07:07 +0100 +0100">15 December 2023</time>
+</span></span></a></span><span><a class="group flex text-right" href=/posts/react-usecontext/><span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">React useContext</span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2024-01-17 00:00:00 +0000 UTC">17 January 2024</time>
+</span></span><span class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&rarr;</span><span class="ltr:hidden rtl:inline">&larr;</span></span></a></span></div></div></footer></article><div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12"><a href=#the-top class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div></main><footer class="py-10 print:hidden"><nav class="pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400"><ul class="flex list-none flex-col sm:flex-row"><li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0"><a href title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Privacy</span></a></li></ul></nav><div class="flex items-center justify-between"><div><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
+2024
+HoHai</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://github.com/jpanther/congo target=_blank rel="noopener noreferrer">Congo</a></p></div><div class="flex flex-row items-center"></div></div></footer></div></body></html>
