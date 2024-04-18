@@ -1,3 +1,4 @@
 # config/_default/params.toml
 
 colorScheme = "ocean"
+homepage.layout = "page"

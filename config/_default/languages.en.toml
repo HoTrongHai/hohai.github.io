@@ -6,7 +6,7 @@ title = "HoHai's GitBlogs"
 name = "HoHai"
 image = "img/author.jpg"
 headline = "A generally awesome human"
-bio = "A software developver"
+bio = "A software developer"
 links = [
-  { twitter = "https://twitter.com/username" }
+  { twitter = "https://twitter.com" }
 ]

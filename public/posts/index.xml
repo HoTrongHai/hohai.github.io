@@ -218,5 +218,12 @@
       <guid>http://localhost:1313/posts/solid-1/</guid>
       <description>Single Responsibility # The class only have one reason to change class Payroll { payFor(employee: Employee) {} } class Employee { CalcPay() {} ReportHours() {} WriteEmploye() {} } How many reason does this class have to change ? How many sources of change ? Then the Employee class should have 3 different responsibilities. 3 methods should be long 3 classes class Payroll { payFor(employee: Employee) {} } class Employee { CalcPay() {} } class ReportWrite { writeReport(employee: Employee) {} } class EmployeeRepository { save(employee: Employee) {} } </description>
     </item>
+    <item>
+      <title>Boston Data Analysis</title>
+      <link>http://localhost:1313/posts/2022-05-24-boston-data-analysis/</link>
+      <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-05-24-boston-data-analysis/</guid>
+      <description>Business Understanding #I love to travel and usually when I have time and money, I pack my bags and hit the road. One of the issues affecting my travel budget is the cost of accommodation (hotel&amp;hellip;). Recently, when I joined the program on Udacity, I got data about housing prices in Boston. Let&amp;rsquo;s study housing prices in Boston with me. There are 3 questions that I am interested in when looking at this data:</description>
+    </item>
   </channel>
 </rss>
