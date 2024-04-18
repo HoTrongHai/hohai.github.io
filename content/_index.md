@@ -73,3 +73,8 @@ git push
   - https://jpanther.github.io/congo/docs/shortcodes/
   - https://jpanther.github.io/congo/docs/hosting-deployment/
   - https://jpanther.github.io/congo/samples/
+
+### TODO List
+
+- [ ] Write `Deep Dive in React Query` {{< badge >}}Before 21-Apr{{< /badge >}}
+- [ ] Study `React Admin` {{< badge >}}Before 02-May{{< /badge >}}
