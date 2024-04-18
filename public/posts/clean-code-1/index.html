@@ -1,0 +1,706 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  
+  <title>Clean Code (Part 1) &middot; HoHai&#39;s website</title>
+    <meta name="title" content="Clean Code (Part 1) &middot; HoHai&#39;s website" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.74ad8406faea02f3e186ba5126249aaeed9073629e04b05037b903396b188724.js"
+    integrity="sha256-dK2EBvrqAvPhhrpRJiSaru2Qc2KeBLBQN7kDOWsYhyQ="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.05134b0c076d1b4bbb3ca117e58cecc39cb5f77b40d6d202c5e4ecd80dea9dc8.css"
+    integrity="sha256-BRNLDAdtG0u7PKEX5Yzsw5y193tA1tICxeTs2A3qncg="
+  />
+  
+  
+  
+  
+  
+  
+  
+  <meta
+    name="description"
+    content="
+      
+        Function # Cannot understand in 3 mins public static String testableHtml( PageData pageData, boolean includeSuiteSetup ) throws Exception { WikiPage wikiPage = pageData.getWikiPage(); StringBuffer buffer = new StringBuffer(); if (pageData.hasAttribute(&#34;Test&#34;)) { if (includeSuiteSetup) { WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage( SuiteResponder.SUITE_SETUP_NAME, wikiPage ); if (suiteSetup != null) { WikiPagePath pagePath = suiteSetup.getPageCrawler().getFullPath(suiteSetup); String pagePathName = PathParser.render(pagePath); buffer.append(&#34;!include -setup .&#34;) .append(pagePathName) .append(&#34;\n&#34;); } } WikiPage setup = PageCrawlerImpl.getInheritedPage(&#34;SetUp&#34;, wikiPage); if (setup != null) { WikiPagePath setupPath = wikiPage.
+      
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/clean-code-1/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/clean-code-1/">
+  <meta property="og:site_name" content="HoHai&#39;s website">
+  <meta property="og:title" content="Clean Code (Part 1)">
+  <meta property="og:description" content="Function # Cannot understand in 3 mins public static String testableHtml( PageData pageData, boolean includeSuiteSetup ) throws Exception { WikiPage wikiPage = pageData.getWikiPage(); StringBuffer buffer = new StringBuffer(); if (pageData.hasAttribute(&amp;#34;Test&amp;#34;)) { if (includeSuiteSetup) { WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage( SuiteResponder.SUITE_SETUP_NAME, wikiPage ); if (suiteSetup != null) { WikiPagePath pagePath = suiteSetup.getPageCrawler().getFullPath(suiteSetup); String pagePathName = PathParser.render(pagePath); buffer.append(&amp;#34;!include -setup .&amp;#34;) .append(pagePathName) .append(&amp;#34;\n&amp;#34;); } } WikiPage setup = PageCrawlerImpl.getInheritedPage(&amp;#34;SetUp&amp;#34;, wikiPage); if (setup != null) { WikiPagePath setupPath = wikiPage.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-11-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-11-02T00:00:00+00:00">
+
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Clean Code (Part 1)">
+<meta name="twitter:description" content="Function # Cannot understand in 3 mins public static String testableHtml( PageData pageData, boolean includeSuiteSetup ) throws Exception { WikiPage wikiPage = pageData.getWikiPage(); StringBuffer buffer = new StringBuffer(); if (pageData.hasAttribute(&#34;Test&#34;)) { if (includeSuiteSetup) { WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage( SuiteResponder.SUITE_SETUP_NAME, wikiPage ); if (suiteSetup != null) { WikiPagePath pagePath = suiteSetup.getPageCrawler().getFullPath(suiteSetup); String pagePathName = PathParser.render(pagePath); buffer.append(&#34;!include -setup .&#34;) .append(pagePathName) .append(&#34;\n&#34;); } } WikiPage setup = PageCrawlerImpl.getInheritedPage(&#34;SetUp&#34;, wikiPage); if (setup != null) { WikiPagePath setupPath = wikiPage.">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Clean Code (Part 1)",
+    "headline": "Clean Code (Part 1)",
+    
+    "abstract": "Function # Cannot understand in 3 mins public static String testableHtml( PageData pageData, boolean includeSuiteSetup ) throws Exception { WikiPage wikiPage = pageData.getWikiPage(); StringBuffer buffer = new StringBuffer(); if (pageData.hasAttribute(\u0026#34;Test\u0026#34;)) { if (includeSuiteSetup) { WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage( SuiteResponder.SUITE_SETUP_NAME, wikiPage ); if (suiteSetup != null) { WikiPagePath pagePath = suiteSetup.getPageCrawler().getFullPath(suiteSetup); String pagePathName = PathParser.render(pagePath); buffer.append(\u0026#34;!include -setup .\u0026#34;) .append(pagePathName) .append(\u0026#34;\\n\u0026#34;); } } WikiPage setup = PageCrawlerImpl.getInheritedPage(\u0026#34;SetUp\u0026#34;, wikiPage); if (setup != null) { WikiPagePath setupPath = wikiPage.",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/clean-code-1\/",
+    "author" : {
+      "@type": "Person",
+      "name": "HoHai"
+    },
+    "copyrightYear": "2023",
+    "dateCreated": "2023-11-02T00:00:00\u002b00:00",
+    "datePublished": "2023-11-02T00:00:00\u002b00:00",
+    
+    "dateModified": "2023-11-02T00:00:00\u002b00:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "651"
+  }
+  </script>
+
+
+  
+  <meta name="author" content="HoHai" />
+  
+    
+      <link href="https://twitter.com/username" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 print:hidden sm:py-10 dark:text-neutral">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >HoHai&rsquo;s website</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/posts/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Posts</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href=""
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Topics</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="https://github.com/jpanther/congo"
+                  title=""
+                  target="_blank"
+                  >
+                    <span
+                      class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                    ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                
+                
+              
+            </li>
+          
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex grow flex-col">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Clean Code (Part 1)
+      </h1>
+      
+        <div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400">
+          
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2023-11-02 00:00:00 &#43;0000 UTC">2 November 2023</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+
+
+        </div>
+      
+      
+    </header>
+    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
+      
+      <div class="min-h-0 min-w-0 max-w-prose grow">
+        <h3 id="function" class="relative group">Function <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#function" aria-label="Anchor">#</a></span></h3><ul>
+<li>Cannot understand in 3 mins</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">testableHtml</span>(
+</span></span><span style="display:flex;"><span>    PageData pageData,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> includeSuiteSetup
+</span></span><span style="display:flex;"><span>) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    WikiPage wikiPage <span style="color:#f92672">=</span> pageData.<span style="color:#a6e22e">getWikiPage</span>();
+</span></span><span style="display:flex;"><span>    StringBuffer buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuffer();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (pageData.<span style="color:#a6e22e">hasAttribute</span>(<span style="color:#e6db74">&#34;Test&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (includeSuiteSetup) {
+</span></span><span style="display:flex;"><span>            WikiPage suiteSetup <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>                PageCrawlerImpl.<span style="color:#a6e22e">getInheritedPage</span>(
+</span></span><span style="display:flex;"><span>                    SuiteResponder.<span style="color:#a6e22e">SUITE_SETUP_NAME</span>, wikiPage
+</span></span><span style="display:flex;"><span>                );
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (suiteSetup <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>                WikiPagePath pagePath <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>                    suiteSetup.<span style="color:#a6e22e">getPageCrawler</span>().<span style="color:#a6e22e">getFullPath</span>(suiteSetup);
+</span></span><span style="display:flex;"><span>                String pagePathName <span style="color:#f92672">=</span> PathParser.<span style="color:#a6e22e">render</span>(pagePath);
+</span></span><span style="display:flex;"><span>                buffer.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;!include -setup .&#34;</span>)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">append</span>(pagePathName)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;\n&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        WikiPage setup <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>            PageCrawlerImpl.<span style="color:#a6e22e">getInheritedPage</span>(<span style="color:#e6db74">&#34;SetUp&#34;</span>, wikiPage);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (setup <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            WikiPagePath setupPath <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>                wikiPage.<span style="color:#a6e22e">getPageCrawler</span>().<span style="color:#a6e22e">getFullPath</span>(setup);
+</span></span><span style="display:flex;"><span>            String setupPathName <span style="color:#f92672">=</span> PathParser.<span style="color:#a6e22e">render</span>(setupPath);
+</span></span><span style="display:flex;"><span>            buffer.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;!include -setup .&#34;</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">append</span>(setupPathName)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;\n&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">append</span>(pageData.<span style="color:#a6e22e">getContent</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (pageData.<span style="color:#a6e22e">hasAttribute</span>(<span style="color:#e6db74">&#34;Test&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        WikiPage teardown <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>            PageCrawlerImpl.<span style="color:#a6e22e">getInheritedPage</span>(<span style="color:#e6db74">&#34;TearDown&#34;</span>, wikiPage);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (teardown <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            WikiPagePath tearDownPath <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>                wikiPage.<span style="color:#a6e22e">getPageCrawler</span>().<span style="color:#a6e22e">getFullPath</span>(teardown);
+</span></span><span style="display:flex;"><span>            String tearDownPathName <span style="color:#f92672">=</span> PathParser.<span style="color:#a6e22e">render</span>(tearDownPath);
+</span></span><span style="display:flex;"><span>            buffer.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;\n&#34;</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;!include -teardown .&#34;</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">append</span>(tearDownPathName)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;\n&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (includeSuiteSetup) {
+</span></span><span style="display:flex;"><span>            WikiPage suiteTeardown <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>                PageCrawlerImpl.<span style="color:#a6e22e">getInheritedPage</span>(
+</span></span><span style="display:flex;"><span>                    SuiteResponder.<span style="color:#a6e22e">SUITE_TEARDOWN_NAME</span>,
+</span></span><span style="display:flex;"><span>                    wikiPage
+</span></span><span style="display:flex;"><span>                );
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (suiteTeardown <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>                WikiPagePath pagePath <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>                    suiteTeardown.<span style="color:#a6e22e">getPageCrawler</span>().<span style="color:#a6e22e">getFullPath</span>(suiteTeardown);
+</span></span><span style="display:flex;"><span>                String pagePathName <span style="color:#f92672">=</span> PathParser.<span style="color:#a6e22e">render</span>(pagePath);
+</span></span><span style="display:flex;"><span>                buffer.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;!include -teardown .&#34;</span>)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">append</span>(pagePathName)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;\n&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    pageData.<span style="color:#a6e22e">setContent</span>(buffer.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pageData.<span style="color:#a6e22e">getHtml</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Refactor:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">renderPageWithSetupsAndTeardowns</span>(
+</span></span><span style="display:flex;"><span>    PageData pageData, <span style="color:#66d9ef">boolean</span> isSuite
+</span></span><span style="display:flex;"><span>) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> isTestPage <span style="color:#f92672">=</span> pageData.<span style="color:#a6e22e">hasAttribute</span>(<span style="color:#e6db74">&#34;Test&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (isTestPage) {
+</span></span><span style="display:flex;"><span>        WikiPage testPage <span style="color:#f92672">=</span> pageData.<span style="color:#a6e22e">getWikiPage</span>();
+</span></span><span style="display:flex;"><span>        StringBuffer newPageContent <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuffer();
+</span></span><span style="display:flex;"><span>        includeSetupPages(testPage, newPageContent, isSuite);
+</span></span><span style="display:flex;"><span>        newPageContent.<span style="color:#a6e22e">append</span>(pageData.<span style="color:#a6e22e">getContent</span>());
+</span></span><span style="display:flex;"><span>        includeTeardownPages(testPage, newPageContent, isSuite);
+</span></span><span style="display:flex;"><span>        pageData.<span style="color:#a6e22e">setContent</span>(newPageContent.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pageData.<span style="color:#a6e22e">getHtml</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Rules:
+<ul>
+<li>Function should be small, very small (&lt;= 20 lines). No bigger than a <code>screen-full</code></li>
+<li>How short function should be ?</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">renderPageWithSetupsAndTeardowns</span>(
+</span></span><span style="display:flex;"><span>  PageData pageData, <span style="color:#66d9ef">boolean</span> isSuite) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (isTestPage(pageData))
+</span></span><span style="display:flex;"><span>  includeSetupAndTeardownPages(pageData, isSuite);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> pageData.<span style="color:#a6e22e">getHtml</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="do-one-thing-do-it-well" class="relative group">DO ONE THING, DO IT WELL <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#do-one-thing-do-it-well" aria-label="Anchor">#</a></span></h3><h3 id="switch-statements" class="relative group">Switch statements <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#switch-statements" aria-label="Anchor">#</a></span></h3><ul>
+<li>When new type add the code will be grow</li>
+<li>Do more than one thing.</li>
+<li>Violate Single Responsibity Principle: there is more than one reason to change</li>
+<li>Violate Open Closed Principle (must change when new types added )</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Money <span style="color:#a6e22e">calculatePay</span>(Employee e) <span style="color:#66d9ef">throws</span> InvalidEmployeeType {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (e.<span style="color:#a6e22e">type</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> COMMISSIONED:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> calculateCommisionedPay(e);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> HOURLY:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> calculateHourlyPay(e);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> SALARIED:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> calculateSalariedPay(e);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InvalidEmployeeType(e.<span style="color:#a6e22e">type</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can refactor by:</p>
+<ul>
+<li>Using <code>Abstract Factory</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isPayday</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> Money <span style="color:#a6e22e">calculatePay</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deliverPay</span>(Money pay);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">EmployeeFactory</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee <span style="color:#a6e22e">makeEmployee</span>(EmployeeRecord r) <span style="color:#66d9ef">throws</span> InvalidEmployeeType;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeFactoryImpl</span> <span style="color:#66d9ef">implements</span> EmployeeFactory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee <span style="color:#a6e22e">makeEmployee</span>(EmployeeRecord r) <span style="color:#66d9ef">throws</span> InvalidEmployeeType {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">switch</span> (r.<span style="color:#a6e22e">type</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> COMMISSIONED:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommissionedEmployee(r) ;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> HOURLY:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> HourlyEmployee(r);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> SALARIED:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> SalariedEmploye(r);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InvalidEmployeeType(r.<span style="color:#a6e22e">type</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="function-arguments" class="relative group">Function arguments <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#function-arguments" aria-label="Anchor">#</a></span></h3><ul>
+<li>Ideally function have ZERO <code>arguments</code>. Then ONE, TWO&hellip;</li>
+<li><code>auguments</code> forces to know a detail</li>
+</ul>
+<h3 id="have-no-side-effects" class="relative group">Have No Side Effects <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#have-no-side-effects" aria-label="Anchor">#</a></span></h3><ul>
+<li><code>checkPassword</code> by its name: it check the password. NOT imply <code>initialize</code> the section</li>
+<li>If you want to rename <code>checkPasswordAndInitizalizeSession</code> then will violate &ldquo;Do one thing&rdquo;</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserValidator</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cryptographer cryptographer;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkPassword</span>(String userName, String password) {
+</span></span><span style="display:flex;"><span>        User user <span style="color:#f92672">=</span> UserGateway.<span style="color:#a6e22e">findByName</span>(userName);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (user <span style="color:#f92672">!=</span> User.<span style="color:#a6e22e">NULL</span>) {
+</span></span><span style="display:flex;"><span>            String codedPhrase <span style="color:#f92672">=</span> user.<span style="color:#a6e22e">getPhraseEncodedByPassword</span>();
+</span></span><span style="display:flex;"><span>            String phrase <span style="color:#f92672">=</span> cryptographer.<span style="color:#a6e22e">decrypt</span>(codedPhrase, password);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#34;Valid Password&#34;</span>.<span style="color:#a6e22e">equals</span>(phrase)) {
+</span></span><span style="display:flex;"><span>                Session.<span style="color:#a6e22e">initialize</span>(); <span style="color:#75715e">// Side effect</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="command-query-seperation" class="relative group">Command Query Seperation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#command-query-seperation" aria-label="Anchor">#</a></span></h3><ul>
+<li><code>Functions</code> should either <code>DO</code> something or <code>ANSWER</code> something, <strong>NOT BOTH</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// NOT GOOD</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">set</span>(String attribute, String value)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// NEED TO CHANGE</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (attributeExists(<span style="color:#e6db74">&#34;username&#34;</span>)) {
+</span></span><span style="display:flex;"><span>    setAttribute(<span style="color:#e6db74">&#34;username&#34;</span>, <span style="color:#e6db74">&#34;unclebob&#34;</span>);
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="prefer-exceptions-to-returning-error-code" class="relative group">Prefer Exceptions to Returning Error Code <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#prefer-exceptions-to-returning-error-code" aria-label="Anchor">#</a></span></h3><ul>
+<li>Return error code is subtle violation of command query separation</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (deletePage(page) <span style="color:#f92672">==</span> E_OK) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (registry.<span style="color:#a6e22e">deleteReference</span>(page.<span style="color:#a6e22e">name</span>) <span style="color:#f92672">==</span> E_OK) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (configKeys.<span style="color:#a6e22e">deleteKey</span>(page.<span style="color:#a6e22e">name</span>.<span style="color:#a6e22e">makeKey</span>()) <span style="color:#f92672">==</span> E_OK) {
+</span></span><span style="display:flex;"><span>            logger.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;page deleted&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            logger.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;configKey not deleted&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        logger.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;deleteReference from registry failed&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    logger.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;delete failed&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> E_ERROR;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>if we use <code>exception</code> then error processing code can be simplified:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    deletePage(page);
+</span></span><span style="display:flex;"><span>    registry.<span style="color:#a6e22e">deleteReference</span>(page.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>    configKeys.<span style="color:#a6e22e">deleteKey</span>(page.<span style="color:#a6e22e">name</span>.<span style="color:#a6e22e">makeKey</span>());
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>    logger.<span style="color:#a6e22e">log</span>(e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Extract <code>Try/Catch</code> blocks
+<ul>
+<li>Extract bodies of <code>try</code> and <code>catch</code> block input functions of their own</li>
+<li><code>delete</code> include error handling</li>
+<li><code>deletePageAndAllReferences</code>&hellip; not include error handling</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete</span>(Page page) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        deletePageAndAllReferences(page);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>        logError(e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deletePageAndAllReferences</span>(Page page) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    deletePage(page);
+</span></span><span style="display:flex;"><span>    registry.<span style="color:#a6e22e">deleteReference</span>(page.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>    configKeys.<span style="color:#a6e22e">deleteKey</span>(page.<span style="color:#a6e22e">name</span>.<span style="color:#a6e22e">makeKey</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">logError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>    logger.<span style="color:#a6e22e">log</span>(e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="dont-repeat-yourself" class="relative group">Don&rsquo;t Repeat Yourself <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#dont-repeat-yourself" aria-label="Anchor">#</a></span></h3>
+      </div>
+    </section>
+    <footer class="max-w-prose pt-8 print:hidden">
+      
+  <div class="flex">
+    
+    
+    
+      
+      
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          Author
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          HoHai
+        </div>
+      
+      
+        <div class="text-sm text-neutral-700 dark:text-neutral-400">A little bit about me</div>
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://twitter.com/username"
+          target="_blank"
+          aria-label="Twitter"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/posts/create-python-project/">
+              <span
+                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&larr;</span
+                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Create Python project</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-10-30 00:00:00 &#43;0000 UTC">30 October 2023</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/posts/ts-setup/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >TypeScript Setup</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-11-03 00:00:00 &#43;0000 UTC">3 November 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&rarr;</span
+                ><span class="ltr:hidden rtl:inline">&larr;</span></span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+          <div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12">
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+    <nav class="pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex list-none flex-col sm:flex-row">
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href=""
+                title=""
+                
+                ><span
+                    class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                    >Privacy</span
+                  >
+                </a
+              >
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            &copy;
+            2024
+            HoHai
+        </p>
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://github.com/jpanther/congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+    </div>
+  </div>
+  
+  
+</footer>
+
+    </div>
+  </body>
+</html>

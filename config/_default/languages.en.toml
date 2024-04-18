@@ -1,6 +1,6 @@
 # config/_default/languages.en.toml
 
-title = "My awesome website"
+title = "HoHai's website"
 
 [params.author]
 name = "HoHai"
