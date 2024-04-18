@@ -16,17 +16,60 @@ This is my blog of technical, programming and more...
 +++
 title = 'Title Name'
 date = 2023-12-12
-draft = false // true for draft version
 +++
+```
+
+Or if we want to keep `Draft` version
+
+```
++++
+title = 'Title Name'
+date = 2023-12-12
+draft = true
++++
+```
+
+- The images will be allocated at `../../assets/img/`
+- Draw diagram using `mermaid`:
+
+```
+{{< mermaid >}}
+
+flowchart
+A["Variable Environment"]
+B["this"]
+C["Outer Environment"]
+D["this will be changed depend on how function is call"]
+
+subgraph Execution Context is create
+direction TB
+A
+B
+C
+D-->B
+end
+
+style D fill:none
+
+{{< /mermaid >}}
+```
+
+- Run on local.
+
+```
+hugo server -D
 ```
 
 - Publish into `Github`. The `Github Action workflow` will automatic build and publish the page
 
 ```
+git add .
+git commit -m "Update"
 git push
 ```
 
 - Others: Refer to Hugo/Congo docs:
   - https://jpanther.github.io/congo/docs/
+  - https://jpanther.github.io/congo/docs/shortcodes/
   - https://jpanther.github.io/congo/docs/hosting-deployment/
   - https://jpanther.github.io/congo/samples/

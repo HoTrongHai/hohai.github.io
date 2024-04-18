@@ -4,7 +4,7 @@ date = 2022-05-24
 draft = false
 +++
 
-![Travelling Image](../images/Money-for-Travel.jpg)
+![Travelling Image](../../assets/img/Money-for-Travel.jpg)
 
 ## Business Understanding
 
@@ -78,7 +78,7 @@ Since the listing prices are taken on a daily basis, for the convenience of mont
 
 #### Visualize the data
 
-![df_listing](../images/chart_price_by_city_and_month.png)
+![df_listing](../../assets/img/chart_price_by_city_and_month.png)
 
 - In the chart, we can see Charlestown city has the highest price (with a mean price 340$/day) and West Roxbury has the lowest price every month.
 - Some cities are having a stable price in all months: Watertown, Milton
@@ -105,7 +105,7 @@ We can see that some features mostly impact to price: `weekly_price`, `monthly_p
 , `accommodates`, `bedrooms`, `square_feet`.
 There are features that lowest impact to price: `acceptance_rate`, `reviews_per_month`
 
-![headmap](../images/headmap_cleaned_df_2.png)
+![headmap](../../assets/img/headmap_cleaned_df_2.png)
 
 > If we want to rent a house having large accommodates, bedrooms, square feets then the prices will be high.
 > To save the housing price we can choose small accommodates, bedrooms, square feets

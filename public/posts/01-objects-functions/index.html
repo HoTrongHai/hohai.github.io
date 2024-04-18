@@ -1,0 +1,1090 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  
+  <title>Objects and Functions &middot; HoHai&#39;s GitBlogs</title>
+    <meta name="title" content="Objects and Functions &middot; HoHai&#39;s GitBlogs" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.74ad8406faea02f3e186ba5126249aaeed9073629e04b05037b903396b188724.js"
+    integrity="sha256-dK2EBvrqAvPhhrpRJiSaru2Qc2KeBLBQN7kDOWsYhyQ="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.05134b0c076d1b4bbb3ca117e58cecc39cb5f77b40d6d202c5e4ecd80dea9dc8.css"
+    integrity="sha256-BRNLDAdtG0u7PKEX5Yzsw5y193tA1tICxeTs2A3qncg="
+  />
+  
+  
+  
+  
+  
+  
+  
+  <meta
+    name="description"
+    content="
+      
+        Objects # How objects are live in memory: They are siting in memory and keep the reference to others (keep in memory also) graph LRA[&#34;Object 0x001&#34;] --&gt; B[&#34;Primitive &#39;Property&#39;
+0x002&#34;]A --&gt; C[&#34;Object Property = collection of name/value pairs
+0x003&#34;]A --&gt; D[&#34;function = method
+0x004&#34;]Namespace: # Keep variables and functions with name seperate Javascript doesn&rsquo;t have namespaces var greet = &#34;Hello !&#34;; var greet = &#34;HOLLA !&#34;; console.
+      
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/01-objects-functions/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/01-objects-functions/">
+  <meta property="og:site_name" content="HoHai&#39;s GitBlogs">
+  <meta property="og:title" content="Objects and Functions">
+  <meta property="og:description" content="Objects # How objects are live in memory: They are siting in memory and keep the reference to others (keep in memory also) graph LRA[&#34;Object 0x001&#34;] --&gt; B[&#34;Primitive &#39;Property&#39; 0x002&#34;]A --&gt; C[&#34;Object Property = collection of name/value pairs 0x003&#34;]A --&gt; D[&#34;function = method 0x004&#34;]Namespace: # Keep variables and functions with name seperate Javascript doesn&amp;rsquo;t have namespaces var greet = &amp;#34;Hello !&amp;#34;; var greet = &amp;#34;HOLLA !&amp;#34;; console.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-02-20T00:00:00+00:00">
+
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Objects and Functions">
+<meta name="twitter:description" content="Objects # How objects are live in memory: They are siting in memory and keep the reference to others (keep in memory also) graph LRA[&#34;Object 0x001&#34;] --&gt; B[&#34;Primitive &#39;Property&#39;
+0x002&#34;]A --&gt; C[&#34;Object Property = collection of name/value pairs
+0x003&#34;]A --&gt; D[&#34;function = method
+0x004&#34;]Namespace: # Keep variables and functions with name seperate Javascript doesn&rsquo;t have namespaces var greet = &#34;Hello !&#34;; var greet = &#34;HOLLA !&#34;; console.">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Objects and Functions",
+    "headline": "Objects and Functions",
+    
+    "abstract": "Objects # How objects are live in memory: They are siting in memory and keep the reference to others (keep in memory also) graph LR\rA[\u0022Object 0x001\u0022] --\u003e B[\u0022Primitive \u0027Property\u0027\n0x002\u0022]\rA --\u003e C[\u0022Object Property = collection of name\/value pairs\n0x003\u0022]\rA --\u003e D[\u0022function = method\n0x004\u0022]\rNamespace: # Keep variables and functions with name seperate Javascript doesn\u0026rsquo;t have namespaces var greet = \u0026#34;Hello !\u0026#34;; var greet = \u0026#34;HOLLA !\u0026#34;; console.",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/01-objects-functions\/",
+    "author" : {
+      "@type": "Person",
+      "name": "HoHai"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-02-20T00:00:00\u002b00:00",
+    "datePublished": "2024-02-20T00:00:00\u002b00:00",
+    
+    "dateModified": "2024-02-20T00:00:00\u002b00:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1168"
+  }
+  </script>
+
+
+  
+  <meta name="author" content="HoHai" />
+  
+    
+      <link href="https://twitter.com" rel="me" />
+    
+  
+  
+  
+
+  
+  
+  
+  
+  <script
+    defer
+    type="text/javascript"
+    src="/js/mermaid.bundle.119bc656ad2b39a49942e355ac2786b1448e64e54bbdaa19847c9c33e64406bacb7fb81235046ee8110163298427867b64d77a30450e0cdf1cff958223ecb9ec.js"
+    integrity="sha512-EZvGVq0rOaSZQuNVrCeGsUSOZOVLvaoZhHycM&#43;ZEBrrLf7gSNQRu6BEBYymEJ4Z7ZNd6MEUODN8c/5WCI&#43;y57A=="
+  ></script>
+
+
+
+
+
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 print:hidden sm:py-10 dark:text-neutral">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >HoHai&rsquo;s GitBlogs</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/posts/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Posts</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href=""
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Topics</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="https://github.com/HoTrongHai"
+                  title=""
+                  target="_blank"
+                  >
+                    <span
+                      class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                    ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                
+                
+              
+            </li>
+          
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex grow flex-col">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Objects and Functions
+      </h1>
+      
+        <div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400">
+          
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2024-02-20 00:00:00 &#43;0000 UTC">20 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+
+
+        </div>
+      
+      
+    </header>
+    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
+      
+      <div class="min-h-0 min-w-0 max-w-prose grow">
+        <h3 id="objects" class="relative group">Objects <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#objects" aria-label="Anchor">#</a></span></h3><ul>
+<li>How objects are live in memory:
+They are siting in memory and keep the reference to others (keep in memory also)</li>
+</ul>
+<div class="mermaid" align="center">
+  
+graph LR
+A["Object <br> 0x001"] --> B["Primitive 'Property'<br> 0x002"]
+A --> C["Object Property = collection of name/value pairs<br> 0x003"]
+A --> D["function = method<br> 0x004"]
+
+</div>
+
+<h3 id="namespace" class="relative group">Namespace: <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#namespace" aria-label="Anchor">#</a></span></h3><ul>
+<li>Keep <code>variables</code> and <code>functions</code> with name seperate</li>
+<li>Javascript doesn&rsquo;t have namespaces</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">greet</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello !&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">greet</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HOLLA !&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// In the case multi language, we can use object wrapping the functions/properties
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">english</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">spanish</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">english</span>.<span style="color:#a6e22e">greet</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">spanish</span>.<span style="color:#a6e22e">greet</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Holla&#34;</span>; <span style="color:#75715e">// Can be used without collision
+</span></span></span></code></pre></div><h3 id="json-and-object-literal" class="relative group">JSON and Object literal <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#json-and-object-literal" aria-label="Anchor">#</a></span></h3><ul>
+<li>JSON has stricter rule than <code>Object Literal</code>:</li>
+<li>Properties need to have quotes</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">objectLiteral</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ho&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hai&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">objectLiteral</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">jSonValue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#39;{&#34;firstName&#34;:&#34;Ho&#34;,&#34;lastName&#34;:&#34;Hai&#34;}&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">jSonValue</span>);
+</span></span></code></pre></div><h3 id="functions-are-objects" class="relative group">Functions are objects <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#functions-are-objects" aria-label="Anchor">#</a></span></h3><ul>
+<li>
+<p>First class Functions: Everything you can do with <strong>other types</strong>, you can do with <strong>functions</strong>.
+Assign a function to variable, pass it&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hello: &#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Can attach new property
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">greet</span>.<span style="color:#a6e22e">language</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;english&#34;</span>;
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Functions</strong> are reside in memory. They are <strong>objects</strong>, then we can attach: primitive, object, function&hellip;</p>
+</li>
+</ul>
+<div class="mermaid" align="center">
+  
+graph LR
+A["<b>Function</b><br>a sepecial type of object"] --attach--> B["Primitive"]
+A--attach property-->C["object"]
+A--attach property-->D["function"]
+
+A--has special property-->E["<b>__NAME__</b><br>optional, can be anonymous"]
+A--has special property-->F["<b>__CODE__</b>"]
+F-.when invoke().->G["(.)"]
+
+style E fill:#00758f
+style F fill:#00758f
+
+
+</div>
+
+<h3 id="function-statements-and-function-expressions" class="relative group">Function statements and Function Expressions <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#function-statements-and-function-expressions" aria-label="Anchor">#</a></span></h3><ul>
+<li><code>Expression</code>: A unit of code that results in a value</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Function statement
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hi&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function expression:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Javascript Engine will execute the expresion
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// function () {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//  console.log(&#34;Hi&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// which one will be return the function pointer, then we assign the name of function pointer is `anonymousGreet`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">anonymousGreet</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hi&#34;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greet</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">anonymousGreet</span>();
+</span></span></code></pre></div><div class="mermaid" align="center">
+  
+flowchart
+
+subgraph P1["Phase1: creation time"]
+A["function greet() {<br>console.log('hi')<br>}"]---->B["<b>Function object</b><br>a special type of object"]
+G["function greet() {<br>console.log('hi')<br>}"]---->H["<b>Function object</b><br>a special type of object"]
+
+B---->C["<b>__NAME__</b><br>greet"]
+B---->D["<b>__CODE__</b><br>console.log('hi)"]
+
+H---->HN["<b>__NAME__</b><br>anonymous"]
+H---->HC["<b>__CODE__</b><br>console.log('hi)"]
+
+subgraph Mem["Memory Space"]
+B
+H
+end
+
+subgraph ExecutionContext["ExecutionContext"]
+I["greet"] ---> B
+K["anonymousGreet"] ----> H
+end
+
+end
+
+subgraph P2["Phase 2: execution time"]
+I---->E["greet()"]
+K ----> L["anonymousGreet()"]
+B--pull the object from memory-->E
+
+E--get **CODE** of object-->F["__CODE__ is run"]
+L--get **CODE** of object-->M["__CODE__ is run"]
+
+end
+
+style A fill:#4287f5,text-align:left
+style P1 fill:#aceefa
+style Mem fill: #32a2a8
+
+
+</div>
+
+<h3 id="by-value-and-by-reference" class="relative group">By Value and By Reference <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#by-value-and-by-reference" aria-label="Anchor">#</a></span></h3><div class="mermaid" align="center">
+  
+
+flowchart
+1["a"] --0x001--> 2["Primitive Value"]
+3["b=a<br> (or pass to a function)"]
+4["b"] --0x002-->5["Copy of Primitive Value"]
+
+style 3 fill:none
+
+</div>
+
+<div class="mermaid" align="center">
+  
+
+flowchart
+1["a"] --0x001--> 2["Objects <br>(including functions)"]
+3["b=a<br> (or pass to a function)"]
+4["b"] --0x001 <br> (point same address)-->2
+
+style 3 fill:none
+
+</div>
+
+<h3 id="this-keywords" class="relative group"><code>this</code> keywords <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#this-keywords" aria-label="Anchor">#</a></span></h3><ul>
+<li><code>this</code> will be created at the creation phase. In this case, <code>this</code> will refer to global object</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>); <span style="color:#75715e">// `this` refer to global object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// Attact new attribute into this global object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">newVariable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">newVariable</span>); <span style="color:#75715e">// Display &#34;Hello&#34;
+</span></span></span></code></pre></div><ul>
+<li>For the function is invoked, the new <code>ExecutionContext</code> is created and Javascript decide what is <code>this</code> keyword refer to.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;The C object&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">log</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">log</span>(); <span style="color:#75715e">// Func log is invoked &gt;&gt; ExecutionContext(log) is create (and `this` will be refer to the object c)
+</span></span></span></code></pre></div><ul>
+<li>Becarefull the <code>this</code> reference in the nested function</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;The C object&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">log</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Updated c object&#34;</span>; <span style="color:#75715e">// `this` refer to the c object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">setName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">newName</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">newName</span>; <span style="color:#75715e">// NOT WORK !!! `this` refer to global object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setName</span>(<span style="color:#e6db74">&#34;Updated c object again !!!&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">log</span>();
+</span></span></code></pre></div><p>To fix this, we can use the pattern <code>self = this</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;The C object&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">log</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">self</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Updated c object&#34;</span>; <span style="color:#75715e">// `this` refer to the c object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">setName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">newName</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">newName</span>; <span style="color:#75715e">// NOT WORK !!! `this` refer to global object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setName</span>(<span style="color:#e6db74">&#34;Updated c object again !!!&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">self</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">log</span>();
+</span></span></code></pre></div><h3 id="arguments-and-spread" class="relative group"><code>arguments</code> and spread <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#arguments-and-spread" aria-label="Anchor">#</a></span></h3><h2 id="hahahugoshortcode48s5hbhb" class="relative group"><div class="mermaid" align="center">
+  
+
+## title: ExecutionContext of function is Created (FUNCTION)
+
+flowchart
+A["Variable Environment"]
+B["this"]
+C["Outer Environment"]
+D["this will be changed depend on how function is call"]
+E["arguments"]
+F["Contain all of parameters you pass to function"]
+
+subgraph Execution Context is created
+direction TB
+A
+B
+C
+D-->B
+F-->E
+end
+
+style D fill:none
+style F fill:none
+style E fill:#42f5a7
+
+</div>
+ <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#hahahugoshortcode48s5hbhb" aria-label="Anchor">#</a></span></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>(<span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>, <span style="color:#a6e22e">language</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arguments</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;-------------------&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greet</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;ho&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;ho&#34;</span>, <span style="color:#e6db74">&#34;hai&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;ho&#34;</span>, <span style="color:#e6db74">&#34;hai&#34;</span>, <span style="color:#e6db74">&#34;en&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>Spread:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greetWithSpread</span>(...<span style="color:#a6e22e">others</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">others</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greetWithSpread</span>(<span style="color:#e6db74">&#34;hai&#34;</span>); <span style="color:#75715e">// [&#39;hai&#39;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">greetWithSpread</span>(<span style="color:#e6db74">&#34;hai&#34;</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// [&#39;hai&#39;, 1]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">greetWithSpread</span>(<span style="color:#e6db74">&#34;hai&#34;</span>, <span style="color:#ae81ff">1</span>, { <span style="color:#a6e22e">street</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;HaNoi&#34;</span> }); <span style="color:#75715e">// [&#39;hai&#39;, 1, {…}]
+</span></span></span></code></pre></div><h3 id="immediately-invoked-function-expressions-iifes" class="relative group">Immediately Invoked Function Expressions (IIFEs) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#immediately-invoked-function-expressions-iifes" aria-label="Anchor">#</a></span></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Using an Immediately Invoked Function Expression (IIFE)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">greeting</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;hello &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>})(<span style="color:#e6db74">&#34;hai&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Trick syntax parser
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hola: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>})(<span style="color:#e6db74">&#34;hohai&#34;</span>);
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+  
+  
+<figure><img src="./imgs/iife.png" alt="alt text" class="mx-auto my-0 rounded-md" />
+</figure>
+</p>
+<h3 id="understanding-closures" class="relative group">Understanding Closures <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#understanding-closures" aria-label="Anchor">#</a></span></h3><p>
+
+
+
+
+
+
+  
+  
+<figure>
+    
+    
+
+
+
+
+
+
+
+
+  
+    <picture
+      class="mx-auto my-0 rounded-md"
+      
+    >
+      
+      
+      
+      
+        <source
+          
+            srcset="/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_330x0_resize_q75_h2_box_3.webp 330w,/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_660x0_resize_q75_h2_box_3.webp 660w
+            
+              ,/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_1024x0_resize_q75_h2_box_3.webp 1024w
+            
+            
+              ,/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_1320x0_resize_q75_h2_box_3.webp 1320w
+            "
+          
+          sizes="100vw"
+          type="image/webp"
+        />
+      
+      <img
+        width="1440"
+        height="816"
+        class="mx-auto my-0 rounded-md"
+        alt="alt text"
+        loading="lazy" decoding="async"
+        
+          src="/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_660x0_resize_box_3.png"
+          srcset="/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_330x0_resize_box_3.png 330w,/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_660x0_resize_box_3.png 660w
+          
+            ,/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_1024x0_resize_box_3.png 1024w
+          
+          
+            ,/../assets/img/closure-1_hu09f49e612eb4c288d33599d4f197840c_74312_1320x0_resize_box_3.png 1320w
+          "
+          sizes="100vw"
+        
+      />
+    </picture>
+  
+
+
+</figure>
+</p>
+<p>
+
+
+
+
+
+
+  
+  
+<figure>
+    
+    
+
+
+
+
+
+
+
+
+  
+    <picture
+      class="mx-auto my-0 rounded-md"
+      
+    >
+      
+      
+      
+      
+        <source
+          
+            srcset="/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_330x0_resize_q75_h2_box_3.webp 330w,/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_660x0_resize_q75_h2_box_3.webp 660w
+            
+              ,/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_1024x0_resize_q75_h2_box_3.webp 1024w
+            
+            
+              ,/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_1320x0_resize_q75_h2_box_3.webp 1320w
+            "
+          
+          sizes="100vw"
+          type="image/webp"
+        />
+      
+      <img
+        width="1415"
+        height="752"
+        class="mx-auto my-0 rounded-md"
+        alt="alt text"
+        loading="lazy" decoding="async"
+        
+          src="/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_660x0_resize_box_3.png"
+          srcset="/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_330x0_resize_box_3.png 330w,/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_660x0_resize_box_3.png 660w
+          
+            ,/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_1024x0_resize_box_3.png 1024w
+          
+          
+            ,/../assets/img/closure-2_hu3e504ed18a3421a936ad95cc7ab77c21_67450_1320x0_resize_box_3.png 1320w
+          "
+          sizes="100vw"
+        
+      />
+    </picture>
+  
+
+
+</figure>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">buildFunctions</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arr</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">buildFunctions</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fs</span>[<span style="color:#ae81ff">0</span>](); <span style="color:#75715e">// 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fs</span>[<span style="color:#ae81ff">1</span>](); <span style="color:#75715e">// 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fs</span>[<span style="color:#ae81ff">2</span>](); <span style="color:#75715e">// 3
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSomeWeird</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">inner</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">obj</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">displayInner</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>);
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">weirdObj</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createSomeWeird</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">weirdObj</span>.<span style="color:#a6e22e">inner</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Weird Object Here&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">weirdObj</span>.<span style="color:#a6e22e">displayInner</span>();
+</span></span></code></pre></div><h3 id="call-apply-bind" class="relative group"><code>call()</code>, <code>apply()</code>, <code>bind()</code> <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#call-apply-bind" aria-label="Anchor">#</a></span></h3><ul>
+<li>
+<p>3 methods are the ways we control the <strong><code>this</code> object</strong> in Function Execution Context</p>
+</li>
+<li>
+<p><code>bind()</code>: setup new <strong>COPIED</strong> method and bind the <code>this</code> object with binded object</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ho&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hai&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getFullName</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lastName</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">logFunc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">lang1</span>, <span style="color:#a6e22e">lang2</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Loged: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getFullName</span>()); <span style="color:#75715e">// Error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">logFuncName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">logFunc</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#a6e22e">person</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">logFuncName</span>(<span style="color:#e6db74">&#34;en&#34;</span>);
+</span></span></code></pre></div><ul>
+<li><code>call()</code>: NOT COPY, JUST EXECUTE and assign <code>this</code> object in the first parameter</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">logFunc</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">person</span>, <span style="color:#e6db74">&#34;en&#34;</span>, <span style="color:#e6db74">&#34;es&#34;</span>);
+</span></span></code></pre></div><ul>
+<li><code>apply()</code>: same to <code>call()</code> except the way we pass in arguments (put them in array)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">logFunc</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">person</span>, [<span style="color:#e6db74">&#34;en&#34;</span>, <span style="color:#e6db74">&#34;es&#34;</span>]);
+</span></span></code></pre></div><ul>
+<li>Use case <code>function borrowing</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">person2</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Doe&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">getFullName</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#a6e22e">person2</span>);
+</span></span></code></pre></div><ul>
+<li>Use case <code>function curring</code>: create a copy of a function but with some preset parameters.
+Beside the setting <code>this</code> object, we can set the aruguments (<strong>partly</strong>)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">multiple</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">multipleByTwo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">multiple</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">this</span>, <span style="color:#ae81ff">2</span>); <span style="color:#75715e">// Beside the setting `this` object, we can set the aruguments (partly)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Do the same things
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">multipleByTwoV2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">multiple</span>(<span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">b</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">multipleByTwo</span>(<span style="color:#ae81ff">5</span>));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">multipleByTwoV2</span>(<span style="color:#ae81ff">5</span>));
+</span></span></code></pre></div><h3 id="functional-programming" class="relative group">Functional Programming <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#functional-programming" aria-label="Anchor">#</a></span></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">mapForEach</span>(<span style="color:#a6e22e">arr</span>, <span style="color:#a6e22e">fn</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">returnedArr</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">returnedArr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">fn</span>(<span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>]));
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">returnedArr</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mapForEach</span>(<span style="color:#a6e22e">arr</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">item</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">checkLimit</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">limitation</span>, <span style="color:#a6e22e">item</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">limitation</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mapForEach</span>(<span style="color:#a6e22e">arr</span>, <span style="color:#a6e22e">checkLimit</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">this</span>, <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// Preset limitation = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">checkLimitSimplified</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">limitation</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">item</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">limitation</span>;
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr4</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mapForEach</span>(<span style="color:#a6e22e">arr</span>, <span style="color:#a6e22e">checkLimitSimplified</span>(<span style="color:#ae81ff">2</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr4</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// var checkLimitV2 = function (limiter) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   return function (arr) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     return mapForEach(arr, function (item) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//       return item &gt; limiter;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     });
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(checkLimitV2(2)(arr));
+</span></span></span></code></pre></div>
+      </div>
+    </section>
+    <footer class="max-w-prose pt-8 print:hidden">
+      
+  <div class="flex">
+    
+    
+    
+      
+      
+        
+        
+
+
+
+
+
+
+
+
+  
+    <picture
+      class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+      
+    >
+      
+      
+      
+      
+      <img
+        width="3259"
+        height="2991"
+        class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+        alt="HoHai"
+        loading="lazy" decoding="async"
+        
+          src="/img/author_hu97632e7bb498806bc9dd27076f37bd44_2378583_660x0_resize_q75_box.jpg"
+          srcset="/img/author_hu97632e7bb498806bc9dd27076f37bd44_2378583_330x0_resize_q75_box.jpg 330w,/img/author_hu97632e7bb498806bc9dd27076f37bd44_2378583_660x0_resize_q75_box.jpg 660w
+          
+            ,/img/author_hu97632e7bb498806bc9dd27076f37bd44_2378583_1024x0_resize_q75_box.jpg 1024w
+          
+          
+            ,/img/author_hu97632e7bb498806bc9dd27076f37bd44_2378583_1320x0_resize_q75_box.jpg 1320w
+          "
+          sizes="100vw"
+        
+      />
+    </picture>
+  
+
+
+      
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          Author
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          HoHai
+        </div>
+      
+      
+        <div class="text-sm text-neutral-700 dark:text-neutral-400">A software developer</div>
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://twitter.com"
+          target="_blank"
+          aria-label="Twitter"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/posts/js-advanced-technique/">
+              <span
+                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&larr;</span
+                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Advanced Javascript Techniques</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-01-19 00:00:00 &#43;0000 UTC">19 January 2024</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/posts/00-execution-context/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Execution context in Javascript</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-02-20 00:00:00 &#43;0000 UTC">20 February 2024</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&rarr;</span
+                ><span class="ltr:hidden rtl:inline">&larr;</span></span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+          <div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12">
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+    <nav class="pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex list-none flex-col sm:flex-row">
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href=""
+                title=""
+                
+                ><span
+                    class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                    >Privacy</span
+                  >
+                </a
+              >
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            &copy;
+            2024
+            HoHai
+        </p>
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://github.com/jpanther/congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+    </div>
+  </div>
+  
+  
+</footer>
+
+    </div>
+  </body>
+</html>

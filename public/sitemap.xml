@@ -4,7 +4,7 @@
   
     
       <url>
-            <loc>http://localhost:1313/</loc>
+            <loc>http://localhost:1313/posts/</loc>
             <lastmod>2024-04-01T00:00:00+00:00</lastmod>
           </url>
     
@@ -18,8 +18,29 @@
   
     
       <url>
-            <loc>http://localhost:1313/posts/</loc>
+            <loc>http://localhost:1313/</loc>
             <lastmod>2024-04-01T00:00:00+00:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/traveller-tree/</loc>
+            <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/00-execution-context/</loc>
+            <lastmod>2024-02-20T00:00:00+00:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/01-objects-functions/</loc>
+            <lastmod>2024-02-20T00:00:00+00:00</lastmod>
           </url>
     
   
@@ -230,6 +251,24 @@
       <url>
             <loc>http://localhost:1313/posts/2022-05-24-boston-data-analysis/</loc>
             <lastmod>2022-05-24T00:00:00+00:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/02-oop-prototype-inheritance/</loc>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/03-build-objects/</loc>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/04-build-jquery/</loc>
           </url>
     
   

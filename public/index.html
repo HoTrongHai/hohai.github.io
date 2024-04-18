@@ -115,6 +115,17 @@
   
   
 
+  
+  
+  
+  
+  <script
+    defer
+    type="text/javascript"
+    src="/js/mermaid.bundle.119bc656ad2b39a49942e355ac2786b1448e64e54bbdaa19847c9c33e64406bacb7fb81235046ee8110163298427867b64d77a30450e0cdf1cff958223ecb9ec.js"
+    integrity="sha512-EZvGVq0rOaSZQuNVrCeGsUSOZOVLvaoZhHycM&#43;ZEBrrLf7gSNQRu6BEBYymEJ4Z7ZNd6MEUODN8c/5WCI&#43;y57A=="
+  ></script>
+
 
 
 
@@ -243,16 +254,54 @@
 <pre tabindex="0"><code>+++
 title = &#39;Title Name&#39;
 date = 2023-12-12
-draft = false // true for draft version
 +++
+</code></pre><p>Or if we want to keep <code>Draft</code> version</p>
+<pre tabindex="0"><code>+++
+title = &#39;Title Name&#39;
+date = 2023-12-12
+draft = true
++++
+</code></pre><ul>
+<li>The images will be allocated at <code>../../assets/img/</code></li>
+<li>Draw diagram using <code>mermaid</code>:</li>
+</ul>
+<pre tabindex="0"><code><div class="mermaid" align="center">
+  
+
+flowchart
+A["Variable Environment"]
+B["this"]
+C["Outer Environment"]
+D["this will be changed depend on how function is call"]
+
+subgraph Execution Context is create
+direction TB
+A
+B
+C
+D-->B
+end
+
+style D fill:none
+
+
+</div>
+
+</code></pre><ul>
+<li>Run on local.</li>
+</ul>
+<pre tabindex="0"><code>hugo server -D
 </code></pre><ul>
 <li>Publish into <code>Github</code>. The <code>Github Action workflow</code> will automatic build and publish the page</li>
 </ul>
-<pre tabindex="0"><code>git push
+<pre tabindex="0"><code>git add .
+git commit -m &#34;Update&#34;
+git push
 </code></pre><ul>
 <li>Others: Refer to Hugo/Congo docs:
 <ul>
 <li><a href="https://jpanther.github.io/congo/docs/" target="_blank" rel="noreferrer">https://jpanther.github.io/congo/docs/</a></li>
+<li><a href="https://jpanther.github.io/congo/docs/shortcodes/" target="_blank" rel="noreferrer">https://jpanther.github.io/congo/docs/shortcodes/</a></li>
 <li><a href="https://jpanther.github.io/congo/docs/hosting-deployment/" target="_blank" rel="noreferrer">https://jpanther.github.io/congo/docs/hosting-deployment/</a></li>
 <li><a href="https://jpanther.github.io/congo/samples/" target="_blank" rel="noreferrer">https://jpanther.github.io/congo/samples/</a></li>
 </ul>
