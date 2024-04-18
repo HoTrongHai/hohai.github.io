@@ -1,12 +1,12 @@
 # config/_default/languages.en.toml
 
-title = "HoHai's website"
+title = "HoHai's GitBlogs"
 
 [params.author]
 name = "HoHai"
 image = "img/author.jpg"
 headline = "A generally awesome human"
-bio = "A little bit about me"
+bio = "A software developver"
 links = [
   { twitter = "https://twitter.com/username" }
 ]

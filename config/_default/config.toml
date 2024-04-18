@@ -1,5 +1,5 @@
 # config/_default/config.toml
 
-baseURL = "https://hohai.github.io"
+baseURL = "https://hotronghai.github.io"
 languageCode = "en"
 paginate = 100
